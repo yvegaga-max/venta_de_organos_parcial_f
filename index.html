@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PlushAnatomy · Órganos que se recuerdan</title>
+    <link rel="stylesheet" href="./styles/style.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Jost:wght@200;300;400;500&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- ── NAVEGACIÓN ── -->
+    <nav class="nav" id="nav">
+    <div class="logo">
+        <span class="logo-icono">P</span>
+        <h2>Pulso<span>Hub</span></h2>
+    </div>
+
+    <button class="menu-hamburger" id="hamburger-btn">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+
+    <div class="nav-links-container" id="nav-links-container">
+        <ul class="menu">
+            <li><a href="#catalogo" class="nav-item">Catálogo</a></li>
+            <li><a href="#ediciones" class="nav-item">Ediciones</a></li>
+            <li><a href="#nosotros" class="nav-item">Nosotros</a></li>
+        </ul>
+        <button class="btn-nav"><a href="#contacto" class="nav-item">Adoptar ahora</a></button>
+    </div>
+</nav>
+
+    <!-- ── HERO ── -->
+    <section class="hero">
+        <div class="hero-badges">
+            <span class="badge">Nuevo lanzamiento</span>
+            <span class="badge badge-outline">Cerebelo disponible</span>
+            <span class="badge badge-outline">Serie 04</span>
+        </div>
+
+        <div class="hero-grid">
+            <div class="hero-texto">
+                <h1>Órganos que se <em>cosen</em> y que se <em>recuerdan.</em></h1>
+                <p class="subtitulo">
+                    Creaciones de hilo y tela para coleccionistas de lo inusual,
+                    donde la biología se remienda con obsesión y curiosidad.
+                    Cada pieza es única, una anomalía cosida a mano, una declaración viva de que lo extraño también
+                    puede ser hermoso.
+                </p>
+                <div class="hero-botones">
+                    <button class="hero1"><a href="#catalogo">Ver laboratorio completo</a></button>
+                    <button class="hero2"><a href="#nosotros">Nuestra obsesión</a></button>
+                </div>
+            </div>
+
+            <div class="hero-imagen" style="background-image: url('assets/corazon.jpg');"></div>
+        </div>
+    </section>
+
+    <!-- ── STATS ── -->
+    <div class="stats">
+        <div class="stat-item">
+            <p class="stat-num">+12K</p>
+            <p class="stat-label">Almas cosidas</p>
+        </div>
+        <div class="stat-item">
+            <p class="stat-num">32</p>
+            <p class="stat-label">Modelos maestros</p>
+        </div>
+        <div class="stat-item">
+            <p class="stat-num">
+                4.9
+                <img src="assets/anatomico.png" alt="Icono Corazón" class="stat-icon">
+            </p>
+            <p class="stat-label">Crítica obsesiva</p>
+        </div>
+        <div class="stat-item">
+            <p class="stat-num">48h</p>
+            <p class="stat-label">Anomalías urgentes</p>
+        </div>
+    </div>
+
+    <!-- ── CATÁLOGO ── -->
+    <section class="catalogo" id="catalogo">
+        <p class="seccion-etiqueta">// CATÁLOGO</p>
+        <h2>Los más adoptados</h2>
+        <p class="subtitulo-seccion">Cada uno con su propio carácter. Ninguno igual.</p>
+
+        <section class="catalogo" id="catalogo">
+            <span class="seccion-etiqueta">Laboratorio</span>
+            <p class="subtitulo-seccion">Piezas anatómicas remendadas a mano.</p>
+
+            <div class="tarjetas">
+                <div class="tarjeta">
+                    <div class="tarjeta-imagen">
+                        <span class="ref">REF—20L</span>
+                        <img src="assets/pulsoxl.png" alt="Pulso XL" class="img-producto-lleno">
+                    </div>
+                    <div class="tarjeta-info">
+                        <h3>Pulso XL: Ensamblaje 04</h3>
+                        <p>4 cámaras de fieltro remendadas, arterias de cobre hilado.</p>
+                        <div class="tarjeta-footer">
+                            <h4>$34.900</h4>
+                            <button class="btn-mas" data-target="cadena-corazon">+</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tarjeta tarjeta-destacada">
+                    <div class="tarjeta-imagen">
+                        <span class="ref">REF—602</span>
+                        <img src="assets/menteenespiral.png" alt="Mente en Espiral" class="img-producto-lleno">
+                    </div>
+                    <div class="tarjeta-info">
+                        <h3>Mente en Espiral: Anomalía 01</h3>
+                        <p>Lóbulos de algodón trenzado, circunvoluciones de encaje de Calais.</p>
+                        <div class="tarjeta-footer">
+                            <h4>$38.500</h4>
+                            <button class="btn-mas" data-target="cadena-cerebro">+</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tarjeta">
+                    <div class="tarjeta-imagen">
+                        <span class="ref">REF—902</span>
+                       <img src="assets/alientodeseda.png" alt="Aliento de Seda" class="img-producto-lleno">
+                    </div>
+                    <div class="tarjeta-info">
+                        <h3>Aliento de Seda: Prototipo 02</h3>
+                        <p>Par de fino texturizado con bronquios de seda cruda.</p>
+                        <div class="tarjeta-footer">
+                            <h4>$41.200</h4>
+                            <button class="btn-mas" data-target="cadena-pulmones">+</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="contenedor-cadenas">
+    
+    <div id="cadena-corazon" class="cadena-productos">
+        <div class="cadena-header">
+            <h4>Variaciones & Derivados del Pulso</h4>
+            <button class="btn-cerrar-cadena">&times;</button>
+        </div>
+        <div class="tarjetas-cadena">
+            
+            <div class="tarjeta tarjeta-mini-completa">
+                <div class="tarjeta-imagen-mini">
+                    <span class="ref-mini">REF—20L-A</span>
+                    <img src="assets/minipulsoescarlata.png" alt="Icono Cerebro" class="img-icono-producto">
+                </div>
+                <div class="tarjeta-info-mini">
+                    <h3>Mini Pulso Escarlata</h3>
+                    <p>Versión compacta en fieltro denso.</p>
+                    <div class="tarjeta-footer-mini">
+                        <h4>$12.000</h4>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tarjeta tarjeta-mini-completa">
+                <div class="tarjeta-imagen-mini">
+                    <span class="ref-mini">REF—20L-B</span>
+                    <img src="assets/arteriaexpuesta.png" alt="Arteria expuesta" class="img-icono-producto">
+                </div>
+                <div class="tarjeta-info-mini">
+                    <h3>Arteria Expuesta</h3>
+                    <p>Estudio de capilares en cobre puro.</p>
+                    <div class="tarjeta-footer-mini">
+                        <h4>$18.500</h4>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div id="cadena-cerebro" class="cadena-productos">
+        <div class="cadena-header">
+            <h4>Extensiones del Sistema Nervioso</h4>
+            <button class="btn-cerrar-cadena">&times;</button>
+        </div>
+        <div class="tarjetas-cadena">
+            
+            <div class="tarjeta tarjeta-mini-completa">
+                <div class="tarjeta-imagen-mini">
+                    <span class="ref-mini">REF—602-A</span>
+                    <img src="assets/cerebelo.png" alt="Icono Cerebro" class="img-icono-producto">
+                </div>
+                <div class="tarjeta-info-mini">
+                    <h3>Cerebelo Aislado</h3>
+                    <p>Remendado con encaje negro de Calais.</p>
+                    <div class="tarjeta-footer-mini">
+                        <h4>$18.000</h4>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tarjeta tarjeta-mini-completa">
+                <div class="tarjeta-imagen-mini">
+                    <span class="ref-mini">REF—602-B</span>
+                    <img src="assets/lobulofrontal.png" alt="Icono Cerebro" class="img-icono-producto">
+                </div>
+                <div class="tarjeta-info-mini">
+                    <h3>Lóbulo Frontal Texturado</h3>
+                    <p>Algodón trenzado crudo de alta densidad.</p>
+                    <div class="tarjeta-footer-mini">
+                        <h4>$21.000</h4>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div id="cadena-pulmones" class="cadena-productos">
+        <div class="cadena-header">
+            <h4>Módulos Respiratorios Complementarios</h4>
+            <button class="btn-cerrar-cadena">&times;</button>
+        </div>
+        <div class="tarjetas-cadena">
+            
+            <div class="tarjeta tarjeta-mini-completa">
+                <div class="tarjeta-imagen-mini">
+                    <span class="ref-mini">REF—902-A</span>
+                    <img src="assets/alveoloindividual.png" alt="Alveolo individual" class="img-icono-producto">
+                </div>
+                <div class="tarjeta-info-mini">
+                    <h3>Alveolo Individual</h3>
+                    <p>Seda cruda con costuras carmesí.</p>
+                    <div class="tarjeta-footer-mini">
+                        <h4>$14.500</h4>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tarjeta tarjeta-mini-completa">
+                <div class="tarjeta-imagen-mini">
+                    <span class="ref-mini">REF—902-B</span>
+                    <img src="assets/traquea.png" alt="Tráquea de Lana" class="img-icono-producto">
+                </div>
+                <div class="tarjeta-info-mini">
+                    <h3>Tráquea de Lana</h3>
+                    <p>Estructura tubular tejida a mano.</p>
+                    <div class="tarjeta-footer-mini">
+                        <h4>$9.000</h4>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+        </section>
+    </section>
+
+    <!-- ── POR QUÉ ── -->
+    <section class="porque" id="nosotros">
+        <p class="seccion-etiqueta">// POR QUÉ PLUSHANATOMY</p>
+        <h2>Raros. Bonitos. Nuestros.</h2>
+
+        <div class="porque-grid">
+
+            <div class="porque-item pri">
+                <div class="porque-icono"><img src="assets/tejido.png" alt="Materiales" class="img-porque"></div>
+                <h4>Materiales: Puntadas obsesivas</h4>
+                <p>Tela anestésica, roletto hipoalergénico, costuras de laboratorio.</p>
+            </div>
+
+            <div class="porque-item sec">
+                <div class="porque-icono"><img src="assets/ficha.png" alt="Ficha" class="img-porque"></div>
+                <h4>Ficha: Registros crípticos</h4>
+                <p>Cada pieza viene con su caso real del órgano. Educativo y coleccionable.</p>
+            </div>
+
+            <div class="porque-item ter">
+                <div class="porque-icono"><img src="assets/produccion.png" alt="Producción" class="img-porque">   </div>
+                <h4>Producción: Ciclo regenerativo</h4>
+                <p>Empaques reutilizables, tintas naturales, cadena trazable.</p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ── TESTIMONIOS ── -->
+    <section class="testimonios" id="ediciones">
+        <p class="seccion-etiqueta">// TESTIMONIOS</p>
+        <h2>Gente que nos entendió</h2>
+
+        <div class="testimonios-grid">
+
+            <div class="testimonio pri-t">
+                <p class="cita">"Le regalé el Pulso remendado a mi profesor de bioética. Casi llora de asombro… o de
+                    preocupación."</p>
+                <div class="autor">
+                    <div class="avatar">LM</div>
+                    <div>
+                        <p class="autor-nombre">Laura M.</p>
+                        <p class="autor-cargo">Estudiante de medicina</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testimonio sec-t">
+                <p class="cita">"El Mente excéntrico vive en mi mesa. Siento que me susurra ideas."</p>
+                <div class="autor">
+                    <div class="avatar">CP</div>
+                    <div>
+                        <p class="autor-nombre">Carlos P.</p>
+                        <p class="autor-cargo">Futuro neurocirujano</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ── CTA FINAL ── -->
+    <section class="cta-final" id="contacto">
+        <h2>¿Listo para <em>adoptar un órgano</em>?</h2>
+        <p>Envío gratis en compras superiores a $80.000 · Hoy y siempre.</p>
+        <button class="btn-cta"><a href="#catalogo">Explorar la colección de artefactos →</a></button>
+    </section>
+
+    <!-- ── FOOTER ── -->
+    <footer>
+        <div class="footer-top">
+            <h3 class="footer-logo">PlushAnatomy</h3>
+            <ul class="footer-redes">
+                <li><a href="#" target="_blank">Instagram</a></li>
+                <li><a href="#" target="_blank">TikTok</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 PULSOHUB. Todos los derechos reservados.</p>
+            <p style="opacity: 0.4;">
+                <a href="https://www.flaticon.es/iconos-gratis/corazon" title="corazón iconos" target="_blank"
+                    rel="noopener">Corazón iconos creados por Futuer - Flaticon</a>
+            </p>
+        </div>
+    </footer>
+
+    <script src="scripts/main.js"></script>
+</body>
+
+</html>

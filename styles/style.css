@@ -1,0 +1,889 @@
+/* ══════════════════════════════════════
+   PLUSHANATOMY · styles.css
+   ══════════════════════════════════════ */
+
+/* ── VARIABLES ── */
+:root {
+    --color-fondo:      #141210;
+    --color-fondo-card: #1e1a15;
+    --color-fondo-card2: #252018;
+    --color-texto:      #f0ece4;
+    --color-rojo:       #c0392b;
+    --color-rojo-claro: #e05a4a;
+    --color-dorado:     #c9a870;
+    --color-dorado-bg:  #b8923e;
+    --color-borde:      rgba(255,255,255,0.08);
+    --color-borde-card: rgba(255,255,255,0.06);
+    --fuente-titulo:    'Playfair Display', serif;
+    --fuente-cuerpo:    'Jost', sans-serif;
+    --transicion:       0.3s ease;
+}
+
+/* ── RESET ── */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+    font-family: var(--fuente-cuerpo);
+    background-color: var(--color-fondo);
+    color: var(--color-texto);
+    font-weight: 300;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+a { text-decoration: none; color: inherit; }
+ul { list-style: none; }
+
+/* ── NAVEGACIÓN ── */
+/* ── BARRA DE NAVEGACIÓN (CON MENÚ CENTRADO EXACTO) ── */
+
+.nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Mantiene logo a la izquierda y el contenedor móvil a la derecha */
+    padding: 1rem 3rem;
+    background: rgba(20, 18, 16, 0.88);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--color-borde);
+    transition: var(--transicion);
+}
+
+.nav.nav-scroll { padding: 0.7rem 3rem; }
+
+.logo { display: flex; align-items: center; gap: 0.5rem; }
+
+.logo-icono {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px; height: 28px;
+    background: var(--color-rojo);
+    color: #fff;
+    font-family: var(--fuente-titulo);
+    font-weight: 700;
+    font-size: 0.9rem;
+    border-radius: 4px;
+}
+
+.logo h2 {
+    font-family: var(--fuente-cuerpo);
+    font-weight: 500;
+    font-size: 1.1rem;
+    letter-spacing: 0.02em;
+}
+
+.logo span { color: var(--color-rojo); }
+
+/* ══ CONTENEDOR ESCRITORIO (Control del centrado) ══ */
+.nav-links-container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+}
+
+/* Modificamos el menú para centrarlo de forma absoluta en la barra */
+.menu { 
+    display: flex; 
+    gap: 2.5rem; 
+    justify-content: center; 
+    align-items: center; 
+    
+    /* TRUCO MÁGICO: Rompe el flujo del flex principal para clavarse en el medio */
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.menu a {
+    font-size: 0.82rem;
+    font-weight: 400;
+    letter-spacing: 0.05em;
+    opacity: 0.65;
+    transition: var(--transicion);
+}
+
+.menu a:hover { opacity: 1; }
+
+.btn-nav {
+    background: transparent;
+    border: 1px solid var(--color-rojo);
+    cursor: pointer;
+    padding: 0.55rem 1.3rem;
+    transition: var(--transicion);
+    /* Empuja el botón "Adoptar ahora" siempre a la derecha en computadora */
+    margin-left: auto; 
+}
+
+.btn-nav a {
+    color: var(--color-rojo);
+    font-size: 0.8rem;
+    font-weight: 400;
+    letter-spacing: 0.08em;
+}
+
+.btn-nav:hover { background: var(--color-rojo); }
+.btn-nav:hover a { color: #fff; }
+
+/* ── HERO ── */
+/* ── HERO ── */
+.hero {
+    min-height: 100vh;
+    padding: 7rem 3rem 4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: radial-gradient(ellipse at 70% 50%, rgba(120,50,30,0.15) 0%, transparent 60%);
+}
+
+.hero-badges { display: flex; gap: 0.6rem; flex-wrap: wrap; margin-bottom: 2rem; }
+
+.badge {
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    padding: 0.3rem 0.9rem;
+    border-radius: 20px;
+    background: var(--color-rojo);
+    color: #fff;
+}
+
+.badge-outline {
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.25);
+    color: rgba(255,255,255,0.65);
+}
+
+.hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: stretch; /* Cambiado a stretch para que la imagen iguale el alto del texto */
+}
+
+.hero h1 {
+    font-family: var(--fuente-titulo);
+    font-size: clamp(2.8rem, 6vw, 5.5rem);
+    font-weight: 900;
+    line-height: 1.05;
+    margin-bottom: 1.5rem;
+}
+
+.hero h1 em { font-style: italic; color: var(--color-rojo); }
+
+.subtitulo {
+    font-size: 0.9rem;
+    opacity: 0.6;
+    max-width: 400px;
+    line-height: 1.8;
+    margin-bottom: 2.5rem;
+}
+
+.hero-botones { display: flex; gap: 0.8rem; flex-wrap: wrap; }
+
+.hero1, .hero2 {
+    border: none;
+    cursor: pointer;
+    padding: 0.85rem 1.8rem;
+    font-family: var(--fuente-cuerpo);
+    font-size: 0.82rem;
+    font-weight: 400;
+    letter-spacing: 0.06em;
+    transition: var(--transicion);
+}
+
+.hero1 { background: var(--color-rojo); color: #fff; }
+.hero1:hover { background: var(--color-rojo-claro); }
+
+.hero2 {
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.2);
+    color: var(--color-texto);
+}
+
+.hero2:hover { border-color: var(--color-rojo); color: var(--color-rojo); }
+
+/* Contenedor de la imagen de fondo */
+.hero-imagen {
+    width: 100%;
+    height: 100%;             
+    min-height: 500px;        
+    background-size: cover;    
+    background-position: center; 
+    background-repeat: no-repeat;
+    
+    /* 1. Quitamos los márgenes negativos extremos para que respire */
+    margin: 0;
+    border-radius: 8px; /* Un borde apenas redondeado la hace ver más pulida */
+
+    /* 2. EFECTO ELEGANTE: Una máscara que difumina el lado izquierdo de la imagen 
+          para que se fusione suavemente con el fondo oscuro del texto */
+    mask-image: linear-gradient(to right, transparent 0%, black 20%);
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 20%);
+
+    /* 3. Animación sutil de flotación (opcional, pero le da un toque vivo premium) */
+    animation: flotarElegante 6s ease-in-out infinite;
+}
+
+/* Animación para que el órgano "levite" suavemente */
+@keyframes flotarElegante {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}
+/* ── STATS ── */
+.stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    background: var(--color-dorado-bg);
+    padding: 2rem 3rem;
+}
+
+.stat-item {
+    text-align: center;
+    padding: 0 1rem;
+    border-right: 1px solid rgba(0,0,0,0.15);
+}
+
+.stat-item:last-child { border-right: none; }
+
+.stat-num {
+    font-family: var(--fuente-titulo);
+    font-size: 2rem;
+    font-weight: 700;
+    color: #1a1410;
+    line-height: 1;
+    margin-bottom: 0.3rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem; /* Espacio entre el 4.9 y el corazón */
+
+}
+
+.stat-icon {
+    width: 24px;  /* Ajusta el tamaño para que vaya a la par del número */
+    height: 24px;
+    object-fit: contain;
+    vertical-align: middle;
+    /* Si el corazón rojo desentona mucho con tu paleta, puedes usar este filtro 
+       para hacerlo doradito sutil como tus variables: */
+    /* filter: sepia(1) saturate(3) hue-rotate(10deg); */
+}
+
+.stat-label {
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(20,18,16,0.65);
+}
+
+/* ── CATÁLOGO ── */
+.catalogo { padding: 6rem 3rem; }
+
+.seccion-etiqueta {
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--color-rojo);
+    opacity: 0.8;
+    margin-bottom: 0.6rem;
+}
+
+.catalogo h2,
+.porque h2,
+.testimonios h2,
+.cta-final h2 {
+    font-family: var(--fuente-titulo);
+    font-size: clamp(1.8rem, 3.5vw, 3rem);
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+}
+
+.cta-final h2 em { color: var(--color-rojo); font-style: italic; }
+
+.subtitulo-seccion {
+    font-size: 0.85rem;
+    opacity: 0.45;
+    margin-bottom: 3rem;
+}
+
+.tarjetas {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.2rem;
+}
+
+.tarjeta {
+    background: var(--color-fondo-card);
+    border: 1px solid var(--color-borde-card);
+    border-radius: 4px;
+    overflow: hidden; /* IMPORTANTE: mantiene la imagen dentro de los bordes redondeados */
+    transition: opacity 0.5s ease, transform 0.5s ease, border-color var(--transicion);
+    /* Aseguramos una estructura flex para que la imagen y la info se estiren */
+    display: flex;
+    flex-direction: column;
+}
+
+/* Modificamos el contenedor de la imagen */
+.tarjeta-imagen {
+    position: relative;
+    padding: 0; /* ELIMINAMOS EL PADDING ANTERIOR */
+    border-bottom: 1px solid var(--color-borde-card);
+    background: rgba(255,255,255,0.02);
+    /* Le damos un alto fijo o proporcional para que la imagen llene el espacio */
+    height: 100%;
+    min-height: 250px; /* Ajusta este valor según prefieras el alto de la imagen */
+    width: 100%;
+    display: flex; /* Asegura que la imagen se estire */
+    align-items: center;
+    justify-content: center;
+}
+
+.tarjeta:hover {
+    border-color: rgba(192,57,43,0.3);
+    transform: translateY(-4px);
+}
+
+/* ── TARJETA DESTACADA (CORREGIDA) ── */
+/* Forzamos que toda la tarjeta y sus bloques internos hereden el fondo claro */
+.tarjeta.tarjeta-destacada,
+.tarjeta.tarjeta-destacada .tarjeta-info,
+.tarjeta.tarjeta-destacada .tarjeta-imagen { 
+    background: #f5f0e8 !important; 
+    color: #1a1410 !important; 
+}
+
+/* Corregimos las referencias, títulos y descripciones aumentando la especificidad */
+.tarjeta.tarjeta-destacada .ref { 
+    color: #8b7355 !important; 
+    opacity: 0.9;
+}
+
+.tarjeta.tarjeta-destacada h3 { 
+    color: #1a1410 !important; 
+    opacity: 1; /* Asegura que el título no esté semitransparente */
+}
+
+.tarjeta.tarjeta-destacada p { 
+    color: rgba(26, 20, 16, 0.75) !important; 
+    opacity: 1;
+}
+
+.tarjeta.tarjeta-destacada h4 { 
+    color: #1a1410 !important; 
+}
+
+/* Estilo del botón más para que resalte en el fondo claro */
+.tarjeta.tarjeta-destacada .btn-mas { 
+    background: #1a1410 !important; 
+    color: #f5f0e8 !important;
+    border-color: #1a1410 !important;
+}
+
+.tarjeta.tarjeta-destacada .btn-mas:hover {
+    background: var(--color-rojo) !important;
+    border-color: var(--color-rojo) !important;
+    color: #ffffff !important;
+}
+
+
+.tarjeta-destacada .tarjeta-imagen {
+    background: rgba(0,0,0,0.04);
+    border-bottom-color: rgba(0,0,0,0.08);
+}
+
+.ref {
+    position: absolute;
+    top: 0.8rem; left: 0.8rem;
+    font-size: 0.62rem;
+    letter-spacing: 0.12em;
+    color: var(--color-dorado);
+    opacity: 0.6;
+}
+
+/* Estilo para la imagen de las tarjetas principales */
+.img-producto-lleno {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* IMPORTANTE: hace que la imagen se estire y cubra sin deformarse */
+    object-position: center; /* Centra el enfoque de la foto */
+    display: block;
+}
+
+/* Efecto opcional: cuando pasas el mouse por la tarjeta, la imagen se acerca un poquito */
+.tarjeta:hover .img-producto {
+    transform: scale(1.05);
+}
+
+.emoji-producto { font-size: 4.5rem; line-height: 1; }
+
+.img-icono-producto {
+    /* 1. Forzamos a la imagen a estirarse a todo el contenedor */
+    width: 100%;
+    height: 100%;
+    min-height: 250px; /* Le da una altura consistente a la zona de la imagen */
+    
+    /* 2. Cambiamos 'contain' por 'cover' para que rellene sin dejar bordes vacíos */
+    object-fit: cover;     
+    object-position: center; /* Mantiene centrado el órgano si la imagen se recorta */
+    display: block;
+    transition: transform var(--transicion);
+}
+
+/* Efecto de movimiento sutil (sin rotar, porque al ser gigante la rotación puede romper los bordes) */
+.tarjeta:hover .img-icono-producto {
+    transform: scale(1.04); 
+}
+
+.tarjeta-info { padding: 1.2rem 1.5rem 1.5rem; }
+
+.tarjeta h3 {
+    font-family: var(--fuente-titulo);
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: var(--color-texto);
+    line-height: 1.3;
+}
+
+.tarjeta p {
+    font-size: 0.82rem;
+    opacity: 0.55;
+    line-height: 1.6;
+    margin-bottom: 1.2rem;
+}
+
+.tarjeta-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.tarjeta h4 {
+    font-family: var(--fuente-titulo);
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--color-dorado);
+}
+
+.btn-mas {
+    width: 32px; height: 32px;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid var(--color-borde);
+    color: var(--color-texto);
+    font-size: 1.2rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transicion);
+    border-radius: 2px;
+}
+
+.btn-mas:hover { background: var(--color-rojo); border-color: var(--color-rojo); }
+
+/* ── POR QUÉ ── */
+.porque {
+    padding: 6rem 3rem;
+    border-top: 1px solid var(--color-borde);
+    border-bottom: 1px solid var(--color-borde);
+    background: rgba(255,255,255,0.015);
+}
+
+.porque h2 { margin-bottom: 3rem; }
+
+.porque-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+}
+
+.porque-item {
+    background: var(--color-fondo-card);
+    border: 1px solid var(--color-borde-card);
+    border-radius: 4px;
+    padding: 2rem;
+    transition: opacity 0.5s ease, transform 0.5s ease, border-color var(--transicion);
+}
+
+.porque-item:hover { border-color: rgba(192,57,43,0.25); }
+
+.porque-icono { font-size: 2rem; margin-bottom: 1rem; }
+
+/* Estilo para los nuevos iconos de la sección "Por qué" */
+.img-porque {
+    width: 40px;          /* Tamaño ideal para que queden finos y no toscos */
+    height: 40px;
+    object-fit: contain;  /* Evita que el icono se deforme si las proporciones varían */
+    display: inline-block;
+    vertical-align: middle;
+    transition: transform 0.3s ease;
+}
+
+/* Efecto sutil: cuando pases el mouse sobre la tarjeta, el icono se moverá un poquito */
+.porque-item:hover .img-porque {
+    transform: translateY(-3px) scale(1.05);
+}
+
+.porque-item h4 {
+    font-family: var(--fuente-titulo);
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 0.6rem;
+    line-height: 1.3;
+}
+
+.porque-item p { font-size: 0.82rem; opacity: 0.5; line-height: 1.7; }
+
+/* ── TESTIMONIOS ── */
+.testimonios { padding: 6rem 3rem; }
+.testimonios h2 { margin-bottom: 2.5rem; }
+
+.testimonios-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+}
+
+.testimonio {
+    background: var(--color-fondo-card);
+    border: 1px solid var(--color-borde-card);
+    border-radius: 4px;
+    padding: 2rem;
+}
+
+.cita {
+    font-family: var(--fuente-titulo);
+    font-size: 1rem;
+    font-style: italic;
+    line-height: 1.7;
+    opacity: 0.85;
+    margin-bottom: 1.5rem;
+}
+
+.autor { display: flex; align-items: center; gap: 0.8rem; }
+
+.avatar {
+    width: 38px; height: 38px;
+    border-radius: 50%;
+    background: var(--color-rojo);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: #fff;
+    flex-shrink: 0;
+}
+
+.autor-nombre { font-size: 0.88rem; font-weight: 500; margin-bottom: 0.1rem; }
+.autor-cargo  { font-size: 0.75rem; opacity: 0.45; }
+
+/* ── CTA FINAL ── */
+.cta-final {
+    padding: 7rem 3rem;
+    text-align: center;
+    background: linear-gradient(to bottom, var(--color-fondo), rgba(30,15,10,0.8));
+}
+
+.cta-final p { font-size: 0.88rem; opacity: 0.5; margin: 0.8rem 0 2.5rem; }
+
+.btn-cta {
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.25);
+    cursor: pointer;
+    padding: 1rem 2.5rem;
+    font-family: var(--fuente-cuerpo);
+    font-size: 0.85rem;
+    font-weight: 400;
+    letter-spacing: 0.06em;
+    color: var(--color-texto);
+    transition: var(--transicion);
+}
+
+.btn-cta:hover { border-color: var(--color-rojo); color: var(--color-rojo); }
+
+/* ── FOOTER ── */
+footer {
+    background: #0d0b09;
+    padding: 2rem 3rem;
+    border-top: 1px solid var(--color-borde);
+}
+
+.footer-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+}
+
+.footer-logo { font-family: var(--fuente-cuerpo); font-weight: 500; font-size: 1rem; color: var(--color-rojo); }
+
+.footer-redes { display: flex; gap: 2rem; }
+
+.footer-redes a { font-size: 0.8rem; opacity: 0.5; transition: var(--transicion); }
+.footer-redes a:hover { opacity: 1; }
+
+.footer-bottom { display: flex; gap: 2.5rem; flex-wrap: wrap; padding-top: 1rem; border-top: 1px solid var(--color-borde); }
+.footer-bottom p { font-size: 0.68rem; opacity: 0.25; letter-spacing: 0.08em; }
+
+/* ── CADENA DE PRODUCTOS EXTENDIDOS ── */
+/* ── NUEVA ESTRUCTURA INTERNA DEL CARRUSEL EN CADENA ── */
+.contenedor-cadenas {
+    margin-top: 2rem;
+    width: 100%;
+}
+
+.cadena-productos {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.01); /* Fondo muy sutil */
+    border: 1px solid transparent;
+    border-radius: 4px;
+    transition: max-height 0.6s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s ease, padding 0.3s ease, margin 0.3s ease;
+    padding: 0 1.5rem;
+    margin-bottom: 0;
+}
+
+.cadena-productos.activa {
+    max-height: 1200px; /* Incrementado para dar espacio a las tarjetas completas */
+    opacity: 1;
+    padding: 2rem 1.5rem;
+    margin-bottom: 2rem;
+    border-color: rgba(192, 57, 43, 0.15);
+}
+
+.cadena-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--color-borde);
+    padding-bottom: 0.8rem;
+    margin-bottom: 1.5rem;
+}
+
+.cadena-header h4 {
+    font-family: var(--fuente-titulo);
+    color: var(--color-dorado);
+    font-size: 1.1rem;
+    letter-spacing: 0.05em;
+}
+
+.btn-cerrar-cadena {
+    background: transparent;
+    border: none;
+    color: var(--color-texto);
+    font-size: 1.5rem;
+    cursor: pointer;
+    opacity: 0.5;
+    transition: var(--transicion);
+}
+
+.btn-cerrar-cadena:hover {
+    opacity: 1;
+    color: var(--color-rojo);
+}
+
+/* Reorganización de la cuadrícula interna */
+.tarjetas-cadena {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+/* Ajustes específicos para las tarjetas del carrusel */
+.tarjeta-mini-completa {
+    background: var(--color-fondo-card2) !important; /* Un tono más claro para resaltar del fondo */
+    border: 1px solid var(--color-borde-card);
+}
+
+.tarjeta-imagen-mini {
+    position: relative;
+    padding: 1.5rem;
+    border-bottom: 1px solid var(--color-borde-card);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 140px;
+    background: rgba(255, 255, 255, 0.01);
+}
+
+.ref-mini {
+    position: absolute;
+    top: 0.6rem; left: 0.6rem;
+    font-size: 0.55rem;
+    letter-spacing: 0.12em;
+    color: var(--color-dorado);
+    opacity: 0.5;
+}
+
+.emoji-mini {
+    font-size: 3.5rem;
+    line-height: 1;
+}
+
+.tarjeta-info-mini {
+    padding: 1rem 1.2rem;
+}
+
+.tarjeta-info-mini h3 {
+    font-family: var(--fuente-titulo);
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+    color: var(--color-texto);
+}
+
+.tarjeta-info-mini p {
+    font-size: 0.78rem;
+    opacity: 0.5;
+    line-height: 1.5;
+    margin-bottom: 1rem;
+}
+
+.tarjeta-footer-mini h4 {
+    font-family: var(--fuente-titulo);
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--color-dorado);
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+   .hero-grid { 
+        grid-template-columns: 1fr; 
+        gap: 3rem;
+    }
+    
+    .hero-imagen { 
+        display: block; 
+        min-height: 400px; 
+        animation: none; /* Desactivamos flotación en móvil para evitar saltos raros */
+        
+        /* En móvil el difuminado va de arriba (transparente) hacia abajo (negro) */
+        mask-image: linear-gradient(to bottom, transparent 0%, black 15%);
+        -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 15%);
+    }
+    
+    .tarjetas             { grid-template-columns: 1fr; }
+    .porque-grid          { grid-template-columns: 1fr; }
+    .testimonios-grid     { grid-template-columns: 1fr; }
+    .stats                { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+}
+
+@media (max-width: 600px) {
+    .nav      { padding: 1rem 1.5rem; }
+    .menu     { display: none; }
+    .hero     { padding: 6rem 1.5rem 3rem; }
+    .catalogo, .porque, .testimonios, .cta-final { padding: 4rem 1.5rem; }
+    footer    { padding: 2rem 1.5rem; }
+    .stats    { padding: 1.5rem; }
+    .stat-item { border-right: none; border-bottom: 1px solid rgba(0,0,0,0.1); padding: 1rem 0; }
+    .hero-imagen {
+        margin-right: -1.5rem;
+        margin-left: -1.5rem;
+        margin-bottom: -3rem;
+    }
+}
+
+
+
+/* ==========================================================================
+   ── CONFIGURACIÓN GENERAL DEL BOTÓN HAMBURGUESA (PUESTO FUERA DEL MEDIA) ──
+   ========================================================================== */
+.menu-hamburger {
+    display: none; /* Oculto en computadora */
+    flex-direction: column;
+    justify-content: space-between;
+    width: 26px;
+    height: 18px;
+    background: transparent !important; /* Forzamos que no tenga fondos raros */
+    border: none !important;
+    padding: 0;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+/* Diseñamos las 3 líneas reales */
+.menu-hamburger span {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: #fff; /* Color de las líneas (ajústalo si usas otro) */
+    border-radius: 2px;
+    transition: all 0.3s ease;
+    transform-origin: left center;
+}
+
+/* ==========================================================================
+   ── SECCIÓN RESPONSIVE CORREGIDA ──
+   ========================================================================== */
+@media (max-width: 768px) {
+    
+    .menu-hamburger {
+        display: flex; /* Hacemos que aparezca en móviles */
+    }
+
+    .nav-links-container {
+        position: fixed;
+        top: 0;
+        right: -100%; 
+        width: 75%;
+        height: 100vh;
+        background: rgba(20, 18, 16, 0.98); 
+        backdrop-filter: blur(15px);
+        border-left: 1px solid var(--color-borde);
+        display: flex; /* Asegura el orden en columna */
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 3rem;
+        transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        z-index: 1000;
+        margin: 0 !important; /* Evita que herede el centrado de escritorio */
+    }
+
+    .nav-links-container.menu-abierto {
+        right: 0;
+    }
+
+    /* Reseteamos el truco del absoluto en celulares */
+    .menu {
+        position: static !important;
+        transform: none !important;
+        flex-direction: column !important;
+        gap: 2rem;
+        padding: 0;
+        margin: 0;
+    }
+
+    .menu a {
+        font-size: 1.2rem;
+        opacity: 0.9;
+    }
+
+    .btn-nav {
+        margin-left: 0 !important; /* Centra el botón en celulares */
+    }
+
+    /* ── ANIMACIÓN DE LAS LÍNEAS AL HACER CLIC (TRANSFORMACIÓN A "X") ── */
+    .menu-hamburger.animado span:nth-child(1) {
+        transform: rotate(45deg);
+    }
+
+    .menu-hamburger.animado span:nth-child(2) {
+        width: 0%;
+        opacity: 0;
+    }
+
+    .menu-hamburger.animado span:nth-child(3) {
+        transform: rotate(-45deg);
+    }
+}
