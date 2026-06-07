@@ -3,6 +3,16 @@
    ══════════════════════════════════════ */
 
 /* ── VARIABLES ── */
+.logo{
+    display:flex;
+    align-items:center;
+}
+
+.logo-img{
+    height:50px;
+    width:auto;
+    display:block;
+}
 :root {
     --color-fondo:      #141210;
     --color-fondo-card: #1e1a15;
@@ -57,6 +67,7 @@ ul { list-style: none; }
 .logo { display: flex; align-items: center; gap: 0.5rem; }
 
 .logo-icono {
+    
     display: flex;
     align-items: center;
     justify-content: center;
@@ -331,23 +342,28 @@ ul { list-style: none; }
 }
 
 /* Modificamos el contenedor de la imagen */
+
 .tarjeta-imagen {
     position: relative;
-    padding: 0; /* ELIMINAMOS EL PADDING ANTERIOR */
+    overflow: hidden;
+
+    width: 100%;
+    height: 320px; /* prueba entre 280 y 350 */
+
     border-bottom: 1px solid var(--color-borde-card);
     background: rgba(255,255,255,0.02);
-    /* Le damos un alto fijo o proporcional para que la imagen llene el espacio */
-    height: 100%;
-    min-height: 250px; /* Ajusta este valor según prefieras el alto de la imagen */
-    width: 100%;
-    display: flex; /* Asegura que la imagen se estire */
+
+    display: flex;
     align-items: center;
     justify-content: center;
 }
-
-.tarjeta:hover {
-    border-color: rgba(192,57,43,0.3);
-    transform: translateY(-4px);
+.tarjeta:hover{
+    .tarjeta:hover{
+    transform: translateY(-8px);
+}
+    box-shadow:
+        0 0 20px rgba(192,57,43,.4),
+        0 0 50px rgba(192,57,43,.2);
 }
 
 /* ── TARJETA DESTACADA (CORREGIDA) ── */
@@ -411,14 +427,42 @@ ul { list-style: none; }
 .img-producto-lleno {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* IMPORTANTE: hace que la imagen se estire y cubra sin deformarse */
-    object-position: center; /* Centra el enfoque de la foto */
+    object-fit: cover;
+    object-position: center;
     display: block;
+
+    transition: transform .6s ease;
+}
+
+.tarjeta:hover .img-producto-lleno {
+    transform: scale(1.08);
 }
 
 /* Efecto opcional: cuando pasas el mouse por la tarjeta, la imagen se acerca un poquito */
 .tarjeta:hover .img-producto {
     transform: scale(1.05);
+}
+
+.tarjeta {
+    position: relative;
+    background: var(--color-fondo-card);
+    border: 1px solid var(--color-borde-card);
+    border-radius: 4px;
+    overflow: hidden;
+
+    display: flex;
+    flex-direction: column;
+
+    transition:
+        transform .45s ease,
+        box-shadow .45s ease,
+        border-color .45s ease;
+}
+.tarjeta h3{
+    transition:.3s;
+}
+.tarjeta:hover h3{
+    color:#c0392b;
 }
 
 .emoji-producto { font-size: 4.5rem; line-height: 1; }
@@ -822,6 +866,131 @@ footer {
     transform-origin: left center;
 }
 
+ /*formulario */ 
+    .contacto{
+    max-width:800px;
+    margin:120px auto;
+    padding:0 20px;
+    text-align:center;
+}
+
+.contacto form{
+    display:flex;
+    flex-direction:column;
+    gap:16px;
+    margin-top:30px;
+}
+
+.contacto input,
+.contacto textarea{
+    background:#141210;
+    border:1px solid rgba(255,255,255,.1);
+    color:white;
+    padding:16px;
+    border-radius:6px;
+    font-family:inherit;
+}
+
+.contacto input:focus,
+.contacto textarea:focus{
+    outline:none;
+    border-color:#c9a870;
+}
+
+.contacto button{
+    background:#c9a870;
+    color:#141210;
+    border:none;
+    padding:16px;
+    cursor:pointer;
+    font-weight:600;
+    transition:.3s;
+}
+
+.contacto button:hover{
+    transform:translateY(-3px);
+}
+
+/* ───────── CONTACTO ───────── */
+
+.contacto{
+    max-width: 900px;
+    margin: 120px auto;
+    padding: 0 30px;
+}
+
+.contacto form{
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.contacto input,
+.contacto textarea{
+    width: 100%;
+    padding: 18px 20px;
+
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(201,168,112,.2);
+
+    color: #f5f0e8;
+    font-family: var(--fuente-texto);
+    font-size: .95rem;
+
+    border-radius: 6px;
+
+    transition: .3s ease;
+}
+
+.contacto input::placeholder,
+.contacto textarea::placeholder{
+    color: rgba(245,240,232,.45);
+}
+
+.contacto input:focus,
+.contacto textarea:focus{
+    outline: none;
+    border-color: #c9a870;
+
+    box-shadow:
+        0 0 15px rgba(201,168,112,.15);
+}
+
+.contacto textarea{
+    min-height: 180px;
+    resize: vertical;
+}
+
+.contacto button{
+    width: fit-content;
+
+    padding: 14px 28px;
+
+    background: #c0392b;
+    color: #f5f0e8;
+
+    border: none;
+    border-radius: 4px;
+
+    cursor: pointer;
+
+    font-family: var(--fuente-texto);
+    font-weight: 500;
+    letter-spacing: .05em;
+
+    transition: .3s ease;
+}
+
+.contacto button:hover{
+    transform: translateY(-3px);
+
+    background: #d24a3b;
+
+    box-shadow:
+        0 8px 25px rgba(192,57,43,.35);
+}
+
 /* ==========================================================================
    ── SECCIÓN RESPONSIVE CORREGIDA ──
    ========================================================================== */
@@ -886,4 +1055,6 @@ footer {
     .menu-hamburger.animado span:nth-child(3) {
         transform: rotate(-45deg);
     }
+   
 }
+

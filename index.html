@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PlushAnatomy · Órganos que se recuerdan</title>
+    <title>ANATEMA · condenadamente adorable </title>
     <link rel="stylesheet" href="./styles/style.css">
     <link
         href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Jost:wght@200;300;400;500&display=swap"
@@ -14,11 +14,10 @@
 <body>
 
     <!-- ── NAVEGACIÓN ── -->
-    <nav class="nav" id="nav">
     <div class="logo">
-        <span class="logo-icono">P</span>
-        <h2>Pulso<span>Hub</span></h2>
-    </div>
+    <img src="assets/logo2.png" alt="Logo Anatema" class="logo-img">
+    <h2 class="logo-texto">ANATEMA</h2>
+   </div>
 
     <button class="menu-hamburger" id="hamburger-btn">
         <span></span>
@@ -331,6 +330,47 @@
         <button class="btn-cta"><a href="#catalogo">Explorar la colección de artefactos →</a></button>
     </section>
 
+       <!-- ── MALDITO FORMULARIO DE MIERDA ── -->
+      <section class="contacto" id="contacto">
+    <p class="seccion-etiqueta">// CONTACTO</p>
+
+    <h2>¿Quieres una parte de ti?</h2>
+
+    <p class="subtitulo-seccion">
+        Cuéntanos qué anomalía buscas y la coseremos para ti.
+    </p>
+
+    <form action="https://formsubmit.co/yvegaga@ufpso.edu.co" method="POST">
+
+        <input
+            type="text"
+            name="nombre"
+            placeholder="Tu nombre"
+            required>
+
+        <input
+            type="email"
+            name="email"
+            placeholder="Tu correo electrónico"
+            required>
+
+        <textarea
+            name="mensaje"
+            rows="6"
+            placeholder="Describe tu anomalía..."
+            required></textarea>
+
+        <button type="submit">
+            Enviar mensaje
+        </button>
+
+        <input type="hidden" name="_subject" value="Nuevo mensaje desde ANATEMA">
+        <input type="hidden" name="_captcha" value="false">
+
+    </form>
+    
+</section>
+
     <!-- ── FOOTER ── -->
     <footer>
         <div class="footer-top">
@@ -342,7 +382,7 @@
             </ul>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2026 PULSOHUB. Todos los derechos reservados.</p>
+            <p>&copy; 2026 ANATEMA. Todos los derechos reservados.</p>
             <p style="opacity: 0.4;">
                 <a href="https://www.flaticon.es/iconos-gratis/corazon" title="corazón iconos" target="_blank"
                     rel="noopener">Corazón iconos creados por Futuer - Flaticon</a>
@@ -351,6 +391,7 @@
     </footer>
 
     <script src="scripts/main.js"></script>
+  
 </body>
 
 </html>
