@@ -1,18 +1,6 @@
-/* ══════════════════════════════════════
-   PLUSHANATOMY · styles.css
-   ══════════════════════════════════════ */
+
 
 /* ── VARIABLES ── */
-.logo{
-    display:flex;
-    align-items:center;
-}
-
-.logo-img{
-    height:50px;
-    width:auto;
-    display:block;
-}
 :root {
     --color-fondo:      #141210;
     --color-fondo-card: #1e1a15;
@@ -50,28 +38,33 @@ ul { list-style: none; }
 
 .nav {
     position: fixed;
+    isolation: isolate;
     top: 0; left: 0; right: 0;
     z-index: 100;
     display: flex;
     align-items: center;
     justify-content: space-between; /* Mantiene logo a la izquierda y el contenedor móvil a la derecha */
-    padding: 1rem 3rem;
+    padding: 1.2rem 4rem;
     background: rgba(20, 18, 16, 0.88);
     backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--color-borde);
     transition: var(--transicion);
 }
 
-.nav.nav-scroll { padding: 0.7rem 3rem; }
+.nav.nav-scroll { padding: 0.9rem 4rem; }
 
-.logo { display: flex; align-items: center; gap: 0.5rem; }
+.logo { 
+    display: flex; 
+    align-items: center; 
+    gap: 0.75rem; }
 
 .logo-icono {
     
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 28px; height: 28px;
+    width: 36px;   
+    height: 36px;
     background: var(--color-rojo);
     color: #fff;
     font-family: var(--fuente-titulo);
@@ -88,6 +81,17 @@ ul { list-style: none; }
 }
 
 .logo span { color: var(--color-rojo); }
+
+.logo{
+    display:flex;
+    align-items:center;
+}
+
+.logo-img{
+    height:40px;
+    width:auto;
+    display:block;
+}
 
 /* ══ CONTENEDOR ESCRITORIO (Control del centrado) ══ */
 .nav-links-container {
