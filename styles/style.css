@@ -1,23 +1,31 @@
+/* ══════════════════════════════════════
+   ANATEMA · style.css
+   ══════════════════════════════════════ */
 
 
-/* ── VARIABLES ── */
+/* ══ VARIABLES GLOBALES ══
+   Paleta de colores, tipografías y transición estándar.
+   Se usan en todo el archivo como var(--nombre). */
 :root {
-    --color-fondo:      #141210;
-    --color-fondo-card: #1e1a15;
-    --color-fondo-card2: #252018;
-    --color-texto:      #f0ece4;
-    --color-rojo:       #c0392b;
-    --color-rojo-claro: #e05a4a;
-    --color-dorado:     #c9a870;
-    --color-dorado-bg:  #b8923e;
-    --color-borde:      rgba(255,255,255,0.08);
-    --color-borde-card: rgba(255,255,255,0.06);
-    --fuente-titulo:    'Playfair Display', serif;
-    --fuente-cuerpo:    'Jost', sans-serif;
-    --transicion:       0.3s ease;
+    --color-fondo:        #141210;
+    --color-fondo-card:   #1e1a15;
+    --color-fondo-card2:  #252018;
+    --color-texto:        #f0ece4;
+    --color-rojo:         #c0392b;
+    --color-rojo-claro:   #e05a4a;
+    --color-dorado:       #c9a870;
+    --color-dorado-bg:    #b8923e;
+    --color-borde:        rgba(255,255,255,0.08);
+    --color-borde-card:   rgba(255,255,255,0.06);
+    --fuente-titulo:      'Playfair Display', serif;
+    --fuente-cuerpo:      'Jost', sans-serif;
+    --transicion:         0.3s ease;
 }
 
-/* ── RESET ── */
+
+/* ══ RESET BÁSICO ══
+   Elimina márgenes y paddings por defecto del navegador.
+   box-sizing: border-box hace que el padding NO aumente el tamaño de los elementos. */
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 
@@ -27,23 +35,27 @@ body {
     color: var(--color-texto);
     font-weight: 300;
     line-height: 1.6;
-    overflow-x: hidden;
+    overflow-x: hidden; /* Evita scroll horizontal accidental */
 }
 
-a { text-decoration: none; color: inherit; }
+a  { text-decoration: none; color: inherit; }
 ul { list-style: none; }
 
-/* ── NAVEGACIÓN ── */
-/* ── BARRA DE NAVEGACIÓN (CON MENÚ CENTRADO EXACTO) ── */
 
+/* ══════════════════════════════════════
+   NAVEGACIÓN
+   Barra fija en la parte superior.
+   Estructura: [Logo] [Menú centrado con position:absolute] [Botón CTA a la derecha]
+   El truco del position:absolute en .menu permite centrarlo
+   independientemente del tamaño del logo o del botón.
+══════════════════════════════════════ */
 .nav {
     position: fixed;
-    isolation: isolate;
     top: 0; left: 0; right: 0;
     z-index: 100;
     display: flex;
     align-items: center;
-    justify-content: space-between; /* Mantiene logo a la izquierda y el contenedor móvil a la derecha */
+    justify-content: space-between;
     padding: 1.2rem 4rem;
     background: rgba(20, 18, 16, 0.88);
     backdrop-filter: blur(12px);
@@ -51,26 +63,20 @@ ul { list-style: none; }
     transition: var(--transicion);
 }
 
+/* Versión compacta al hacer scroll (clase añadida por JS) */
 .nav.nav-scroll { padding: 0.9rem 4rem; }
 
-.logo { 
-    display: flex; 
-    align-items: center; 
-    gap: 0.75rem; }
-
-.logo-icono {
-    
+/* Contenedor del logo: imagen + texto */
+.logo {
     display: flex;
     align-items: center;
-    justify-content: center;
-    width: 36px;   
-    height: 36px;
-    background: var(--color-rojo);
-    color: #fff;
-    font-family: var(--fuente-titulo);
-    font-weight: 700;
-    font-size: 0.9rem;
-    border-radius: 4px;
+    gap: 0.75rem;
+}
+
+.logo-img {
+    height: 40px;
+    width: auto;
+    display: block;
 }
 
 .logo h2 {
@@ -80,34 +86,20 @@ ul { list-style: none; }
     letter-spacing: 0.02em;
 }
 
-.logo span { color: var(--color-rojo); }
-
-.logo{
-    display:flex;
-    align-items:center;
-}
-
-.logo-img{
-    height:40px;
-    width:auto;
-    display:block;
-}
-
-/* ══ CONTENEDOR ESCRITORIO (Control del centrado) ══ */
+/* El nav-links-container agrupa menú + botón CTA.
+   En escritorio ocupa el ancho restante para que margin-left:auto del botón funcione. */
 .nav-links-container {
     display: flex;
     align-items: center;
     width: 100%;
 }
 
-/* Modificamos el menú para centrarlo de forma absoluta en la barra */
-.menu { 
-    display: flex; 
-    gap: 2.5rem; 
-    justify-content: center; 
-    align-items: center; 
-    
-    /* TRUCO MÁGICO: Rompe el flujo del flex principal para clavarse en el medio */
+/* El menú se centra de forma absoluta respecto al <nav> (no al contenedor) */
+.menu {
+    display: flex;
+    gap: 2.5rem;
+    justify-content: center;
+    align-items: center;
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
@@ -126,14 +118,14 @@ ul { list-style: none; }
 
 .menu a:hover { opacity: 1; }
 
+/* Botón "Adoptar ahora": empujado a la derecha con margin-left:auto */
 .btn-nav {
     background: transparent;
     border: 1px solid var(--color-rojo);
     cursor: pointer;
     padding: 0.55rem 1.3rem;
     transition: var(--transicion);
-    /* Empuja el botón "Adoptar ahora" siempre a la derecha en computadora */
-    margin-left: auto; 
+    margin-left: auto;
 }
 
 .btn-nav a {
@@ -143,11 +135,45 @@ ul { list-style: none; }
     letter-spacing: 0.08em;
 }
 
-.btn-nav:hover { background: var(--color-rojo); }
-.btn-nav:hover a { color: #fff; }
+.btn-nav:hover             { background: var(--color-rojo); }
+.btn-nav:hover a           { color: #fff; }
 
-/* ── HERO ── */
-/* ── HERO ── */
+
+/* ══════════════════════════════════════
+   BOTÓN HAMBURGUESA
+   Oculto en escritorio. En móvil (<768px) se muestra con display:flex.
+   Las 3 líneas se convierten en "X" con la clase .animado (añadida por JS).
+══════════════════════════════════════ */
+.menu-hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 26px;
+    height: 18px;
+    background: transparent !important;
+    border: none !important;
+    padding: 0;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+.menu-hamburger span {
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: #fff;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+    transform-origin: left center;
+}
+
+
+/* ══════════════════════════════════════
+   HERO
+   Sección de entrada que ocupa el 100% del viewport.
+   Grid de 2 columnas: texto a la izquierda, imagen a la derecha.
+   La imagen usa mask-image para difuminarse suavemente hacia el texto.
+══════════════════════════════════════ */
 .hero {
     min-height: 100vh;
     padding: 7rem 3rem 4rem;
@@ -159,6 +185,7 @@ ul { list-style: none; }
 
 .hero-badges { display: flex; gap: 0.6rem; flex-wrap: wrap; margin-bottom: 2rem; }
 
+/* Badge relleno (color de acento) */
 .badge {
     font-size: 0.7rem;
     letter-spacing: 0.1em;
@@ -168,6 +195,7 @@ ul { list-style: none; }
     color: #fff;
 }
 
+/* Badge solo con borde, sin fondo */
 .badge-outline {
     background: transparent;
     border: 1px solid rgba(255,255,255,0.25);
@@ -178,7 +206,7 @@ ul { list-style: none; }
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 4rem;
-    align-items: stretch; /* Cambiado a stretch para que la imagen iguale el alto del texto */
+    align-items: stretch;
 }
 
 .hero h1 {
@@ -223,35 +251,35 @@ ul { list-style: none; }
 
 .hero2:hover { border-color: var(--color-rojo); color: var(--color-rojo); }
 
-/* Contenedor de la imagen de fondo */
+/* Imagen del hero: usa background-image para poder aplicar mask-image CSS */
 .hero-imagen {
     width: 100%;
-    height: 100%;             
-    min-height: 500px;        
-    background-size: cover;    
-    background-position: center; 
+    height: 100%;
+    min-height: 500px;
+    background-size: cover;
+    background-position: center;
     background-repeat: no-repeat;
-    
-    /* 1. Quitamos los márgenes negativos extremos para que respire */
     margin: 0;
-    border-radius: 8px; /* Un borde apenas redondeado la hace ver más pulida */
-
-    /* 2. EFECTO ELEGANTE: Una máscara que difumina el lado izquierdo de la imagen 
-          para que se fusione suavemente con el fondo oscuro del texto */
+    border-radius: 8px;
+    /* Difumina el borde izquierdo para fundirse con el texto */
     mask-image: linear-gradient(to right, transparent 0%, black 20%);
     -webkit-mask-image: linear-gradient(to right, transparent 0%, black 20%);
-
-    /* 3. Animación sutil de flotación (opcional, pero le da un toque vivo premium) */
+    /* Animación de flotación suave */
     animation: flotarElegante 6s ease-in-out infinite;
 }
 
-/* Animación para que el órgano "levite" suavemente */
 @keyframes flotarElegante {
-    0% { transform: translateY(0px); }
-    50% { transform: translateY(-10px); }
+    0%   { transform: translateY(0px); }
+    50%  { transform: translateY(-10px); }
     100% { transform: translateY(0px); }
 }
-/* ── STATS ── */
+
+
+/* ══════════════════════════════════════
+   STATS
+   Banda dorada con 4 métricas clave.
+   Grid de 4 columnas con separadores verticales entre ítems.
+══════════════════════════════════════ */
 .stats {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -277,18 +305,14 @@ ul { list-style: none; }
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 0.4rem; /* Espacio entre el 4.9 y el corazón */
-
+    gap: 0.4rem;
 }
 
 .stat-icon {
-    width: 24px;  /* Ajusta el tamaño para que vaya a la par del número */
+    width: 24px;
     height: 24px;
     object-fit: contain;
     vertical-align: middle;
-    /* Si el corazón rojo desentona mucho con tu paleta, puedes usar este filtro 
-       para hacerlo doradito sutil como tus variables: */
-    /* filter: sepia(1) saturate(3) hue-rotate(10deg); */
 }
 
 .stat-label {
@@ -298,9 +322,16 @@ ul { list-style: none; }
     color: rgba(20,18,16,0.65);
 }
 
-/* ── CATÁLOGO ── */
+
+/* ══════════════════════════════════════
+   CATÁLOGO
+   Sección con grid de tarjetas de producto.
+   Cada tarjeta tiene imagen + info + footer con precio y botón "+".
+   El botón "+" despliega una cadena de variantes debajo del grid.
+══════════════════════════════════════ */
 .catalogo { padding: 6rem 3rem; }
 
+/* Etiqueta de sección pequeña en rojo (// CATÁLOGO, // CONTACTO, etc.) */
 .seccion-etiqueta {
     font-size: 0.72rem;
     letter-spacing: 0.2em;
@@ -308,8 +339,10 @@ ul { list-style: none; }
     color: var(--color-rojo);
     opacity: 0.8;
     margin-bottom: 0.6rem;
+    display: block;
 }
 
+/* Títulos principales de cada sección */
 .catalogo h2,
 .porque h2,
 .testimonios h2,
@@ -328,96 +361,50 @@ ul { list-style: none; }
     margin-bottom: 3rem;
 }
 
+/* Grid de 3 tarjetas en escritorio */
 .tarjetas {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 1.2rem;
 }
 
+/* Tarjeta base: columna flex para que la imagen y la info se distribuyan */
 .tarjeta {
+    position: relative;
     background: var(--color-fondo-card);
     border: 1px solid var(--color-borde-card);
     border-radius: 4px;
-    overflow: hidden; /* IMPORTANTE: mantiene la imagen dentro de los bordes redondeados */
-    transition: opacity 0.5s ease, transform 0.5s ease, border-color var(--transicion);
-    /* Aseguramos una estructura flex para que la imagen y la info se estiren */
+    overflow: hidden;
     display: flex;
     flex-direction: column;
+    transition: transform .45s ease, box-shadow .45s ease, border-color .45s ease;
 }
 
-/* Modificamos el contenedor de la imagen */
-
-.tarjeta-imagen {
-    position: relative;
-    overflow: hidden;
-
-    width: 100%;
-    height: 320px; /* prueba entre 280 y 350 */
-
-    border-bottom: 1px solid var(--color-borde-card);
-    background: rgba(255,255,255,0.02);
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.tarjeta:hover{
-    .tarjeta:hover{
+/* Hover: eleva la tarjeta y añade halo rojo */
+.tarjeta:hover {
     transform: translateY(-8px);
-}
     box-shadow:
         0 0 20px rgba(192,57,43,.4),
         0 0 50px rgba(192,57,43,.2);
 }
 
-/* ── TARJETA DESTACADA (CORREGIDA) ── */
-/* Forzamos que toda la tarjeta y sus bloques internos hereden el fondo claro */
-.tarjeta.tarjeta-destacada,
-.tarjeta.tarjeta-destacada .tarjeta-info,
-.tarjeta.tarjeta-destacada .tarjeta-imagen { 
-    background: #f5f0e8 !important; 
-    color: #1a1410 !important; 
+.tarjeta h3 { transition: .3s; }
+.tarjeta:hover h3 { color: var(--color-rojo); }
+
+/* Zona de imagen dentro de la tarjeta */
+.tarjeta-imagen {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: 320px;
+    border-bottom: 1px solid var(--color-borde-card);
+    background: rgba(255,255,255,0.02);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-/* Corregimos las referencias, títulos y descripciones aumentando la especificidad */
-.tarjeta.tarjeta-destacada .ref { 
-    color: #8b7355 !important; 
-    opacity: 0.9;
-}
-
-.tarjeta.tarjeta-destacada h3 { 
-    color: #1a1410 !important; 
-    opacity: 1; /* Asegura que el título no esté semitransparente */
-}
-
-.tarjeta.tarjeta-destacada p { 
-    color: rgba(26, 20, 16, 0.75) !important; 
-    opacity: 1;
-}
-
-.tarjeta.tarjeta-destacada h4 { 
-    color: #1a1410 !important; 
-}
-
-/* Estilo del botón más para que resalte en el fondo claro */
-.tarjeta.tarjeta-destacada .btn-mas { 
-    background: #1a1410 !important; 
-    color: #f5f0e8 !important;
-    border-color: #1a1410 !important;
-}
-
-.tarjeta.tarjeta-destacada .btn-mas:hover {
-    background: var(--color-rojo) !important;
-    border-color: var(--color-rojo) !important;
-    color: #ffffff !important;
-}
-
-
-.tarjeta-destacada .tarjeta-imagen {
-    background: rgba(0,0,0,0.04);
-    border-bottom-color: rgba(0,0,0,0.08);
-}
-
+/* Etiqueta de referencia (REF—20L) sobre la imagen */
 .ref {
     position: absolute;
     top: 0.8rem; left: 0.8rem;
@@ -427,68 +414,19 @@ ul { list-style: none; }
     opacity: 0.6;
 }
 
-/* Estilo para la imagen de las tarjetas principales */
+/* Imagen a pantalla completa dentro de la tarjeta */
 .img-producto-lleno {
     width: 100%;
     height: 100%;
     object-fit: cover;
     object-position: center;
     display: block;
-
     transition: transform .6s ease;
 }
 
-.tarjeta:hover .img-producto-lleno {
-    transform: scale(1.08);
-}
+.tarjeta:hover .img-producto-lleno { transform: scale(1.08); }
 
-/* Efecto opcional: cuando pasas el mouse por la tarjeta, la imagen se acerca un poquito */
-.tarjeta:hover .img-producto {
-    transform: scale(1.05);
-}
-
-.tarjeta {
-    position: relative;
-    background: var(--color-fondo-card);
-    border: 1px solid var(--color-borde-card);
-    border-radius: 4px;
-    overflow: hidden;
-
-    display: flex;
-    flex-direction: column;
-
-    transition:
-        transform .45s ease,
-        box-shadow .45s ease,
-        border-color .45s ease;
-}
-.tarjeta h3{
-    transition:.3s;
-}
-.tarjeta:hover h3{
-    color:#c0392b;
-}
-
-.emoji-producto { font-size: 4.5rem; line-height: 1; }
-
-.img-icono-producto {
-    /* 1. Forzamos a la imagen a estirarse a todo el contenedor */
-    width: 100%;
-    height: 100%;
-    min-height: 250px; /* Le da una altura consistente a la zona de la imagen */
-    
-    /* 2. Cambiamos 'contain' por 'cover' para que rellene sin dejar bordes vacíos */
-    object-fit: cover;     
-    object-position: center; /* Mantiene centrado el órgano si la imagen se recorta */
-    display: block;
-    transition: transform var(--transicion);
-}
-
-/* Efecto de movimiento sutil (sin rotar, porque al ser gigante la rotación puede romper los bordes) */
-.tarjeta:hover .img-icono-producto {
-    transform: scale(1.04); 
-}
-
+/* Zona de texto de la tarjeta */
 .tarjeta-info { padding: 1.2rem 1.5rem 1.5rem; }
 
 .tarjeta h3 {
@@ -507,6 +445,7 @@ ul { list-style: none; }
     margin-bottom: 1.2rem;
 }
 
+/* Fila inferior: precio a la izquierda, botón "+" a la derecha */
 .tarjeta-footer {
     display: flex;
     align-items: center;
@@ -520,6 +459,7 @@ ul { list-style: none; }
     color: var(--color-dorado);
 }
 
+/* Botón "+" que abre la cadena de variantes */
 .btn-mas {
     width: 32px; height: 32px;
     background: rgba(255,255,255,0.08);
@@ -536,7 +476,171 @@ ul { list-style: none; }
 
 .btn-mas:hover { background: var(--color-rojo); border-color: var(--color-rojo); }
 
-/* ── POR QUÉ ── */
+
+/* ══ TARJETA DESTACADA ══
+   Fondo claro (#f5f0e8) para resaltar un producto del resto.
+   Se usan !important para sobreescribir los estilos oscuros de .tarjeta. */
+.tarjeta.tarjeta-destacada,
+.tarjeta.tarjeta-destacada .tarjeta-info,
+.tarjeta.tarjeta-destacada .tarjeta-imagen {
+    background: #f5f0e8 !important;
+    color: #1a1410 !important;
+}
+
+.tarjeta.tarjeta-destacada .ref   { color: #8b7355 !important; opacity: 0.9; }
+.tarjeta.tarjeta-destacada h3     { color: #1a1410 !important; opacity: 1; }
+.tarjeta.tarjeta-destacada p      { color: rgba(26,20,16,0.75) !important; opacity: 1; }
+.tarjeta.tarjeta-destacada h4     { color: #1a1410 !important; }
+
+.tarjeta.tarjeta-destacada .btn-mas {
+    background: #1a1410 !important;
+    color: #f5f0e8 !important;
+    border-color: #1a1410 !important;
+}
+
+.tarjeta.tarjeta-destacada .btn-mas:hover {
+    background: var(--color-rojo) !important;
+    border-color: var(--color-rojo) !important;
+    color: #fff !important;
+}
+
+.tarjeta-destacada .tarjeta-imagen {
+    background: rgba(0,0,0,0.04);
+    border-bottom-color: rgba(0,0,0,0.08);
+}
+
+
+/* ══════════════════════════════════════
+   CADENAS DE PRODUCTOS (variantes)
+   Panel colapsable que aparece debajo del grid al pulsar "+".
+   Usa max-height + opacity para la animación de apertura suave.
+   La clase "activa" es añadida/quitada por JS.
+══════════════════════════════════════ */
+.contenedor-cadenas { margin-top: 2rem; width: 100%; }
+
+.cadena-productos {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    background: rgba(255,255,255,0.01);
+    border: 1px solid transparent;
+    border-radius: 4px;
+    transition: max-height 0.6s cubic-bezier(0.4,0,0.2,1), opacity 0.4s ease, padding 0.3s ease, margin 0.3s ease;
+    padding: 0 1.5rem;
+    margin-bottom: 0;
+}
+
+.cadena-productos.activa {
+    max-height: 1200px;
+    opacity: 1;
+    padding: 2rem 1.5rem;
+    margin-bottom: 2rem;
+    border-color: rgba(192,57,43,0.15);
+}
+
+.cadena-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--color-borde);
+    padding-bottom: 0.8rem;
+    margin-bottom: 1.5rem;
+}
+
+.cadena-header h4 {
+    font-family: var(--fuente-titulo);
+    color: var(--color-dorado);
+    font-size: 1.1rem;
+    letter-spacing: 0.05em;
+}
+
+.btn-cerrar-cadena {
+    background: transparent;
+    border: none;
+    color: var(--color-texto);
+    font-size: 1.5rem;
+    cursor: pointer;
+    opacity: 0.5;
+    transition: var(--transicion);
+}
+
+.btn-cerrar-cadena:hover { opacity: 1; color: var(--color-rojo); }
+
+/* Grid de tarjetas dentro de la cadena */
+.tarjetas-cadena {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+/* Tarjeta mini (variante): fondo ligeramente distinto para diferenciarla */
+.tarjeta-mini-completa {
+    background: var(--color-fondo-card2) !important;
+    border: 1px solid var(--color-borde-card);
+}
+
+.tarjeta-imagen-mini {
+    position: relative;
+    padding: 1.5rem;
+    border-bottom: 1px solid var(--color-borde-card);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 140px;
+    background: rgba(255,255,255,0.01);
+}
+
+.ref-mini {
+    position: absolute;
+    top: 0.6rem; left: 0.6rem;
+    font-size: 0.55rem;
+    letter-spacing: 0.12em;
+    color: var(--color-dorado);
+    opacity: 0.5;
+}
+
+/* Imagen de ícono dentro de las tarjetas mini */
+.img-icono-producto {
+    width: 100%;
+    height: 100%;
+    min-height: 100px;
+    object-fit: contain;
+    object-position: center;
+    display: block;
+    transition: transform var(--transicion);
+}
+
+.tarjeta:hover .img-icono-producto { transform: scale(1.04); }
+
+.tarjeta-info-mini { padding: 1rem 1.2rem; }
+
+.tarjeta-info-mini h3 {
+    font-family: var(--fuente-titulo);
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+    color: var(--color-texto);
+}
+
+.tarjeta-info-mini p {
+    font-size: 0.78rem;
+    opacity: 0.5;
+    line-height: 1.5;
+    margin-bottom: 1rem;
+}
+
+.tarjeta-footer-mini h4 {
+    font-family: var(--fuente-titulo);
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--color-dorado);
+}
+
+
+/* ══════════════════════════════════════
+   POR QUÉ
+   Sección de propuesta de valor con 3 tarjetas de beneficios.
+══════════════════════════════════════ */
 .porque {
     padding: 6rem 3rem;
     border-top: 1px solid var(--color-borde);
@@ -564,20 +668,17 @@ ul { list-style: none; }
 
 .porque-icono { font-size: 2rem; margin-bottom: 1rem; }
 
-/* Estilo para los nuevos iconos de la sección "Por qué" */
+/* Ícono SVG dentro de la sección de beneficios */
 .img-porque {
-    width: 40px;          /* Tamaño ideal para que queden finos y no toscos */
+    width: 40px;
     height: 40px;
-    object-fit: contain;  /* Evita que el icono se deforme si las proporciones varían */
+    object-fit: contain;
     display: inline-block;
     vertical-align: middle;
     transition: transform 0.3s ease;
 }
 
-/* Efecto sutil: cuando pases el mouse sobre la tarjeta, el icono se moverá un poquito */
-.porque-item:hover .img-porque {
-    transform: translateY(-3px) scale(1.05);
-}
+.porque-item:hover .img-porque { transform: translateY(-3px) scale(1.05); }
 
 .porque-item h4 {
     font-family: var(--fuente-titulo);
@@ -589,7 +690,10 @@ ul { list-style: none; }
 
 .porque-item p { font-size: 0.82rem; opacity: 0.5; line-height: 1.7; }
 
-/* ── TESTIMONIOS ── */
+
+/* ══════════════════════════════════════
+   TESTIMONIOS
+══════════════════════════════════════ */
 .testimonios { padding: 6rem 3rem; }
 .testimonios h2 { margin-bottom: 2.5rem; }
 
@@ -633,7 +737,11 @@ ul { list-style: none; }
 .autor-nombre { font-size: 0.88rem; font-weight: 500; margin-bottom: 0.1rem; }
 .autor-cargo  { font-size: 0.75rem; opacity: 0.45; }
 
-/* ── CTA FINAL ── */
+
+/* ══════════════════════════════════════
+   CTA FINAL
+   Llamada a la acción con gradiente de fondo.
+══════════════════════════════════════ */
 .cta-final {
     padding: 7rem 3rem;
     text-align: center;
@@ -657,7 +765,77 @@ ul { list-style: none; }
 
 .btn-cta:hover { border-color: var(--color-rojo); color: var(--color-rojo); }
 
-/* ── FOOTER ── */
+
+/* ══════════════════════════════════════
+   FORMULARIO DE CONTACTO
+   Un único bloque de estilos (antes había dos que se pisaban).
+   Centrado con max-width y margin:auto.
+══════════════════════════════════════ */
+.contacto {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 6rem 3rem;
+}
+
+.contacto form {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.contacto input,
+.contacto textarea {
+    width: 100%;
+    padding: 18px 20px;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(201,168,112,.2);
+    color: #f5f0e8;
+    font-family: var(--fuente-cuerpo);
+    font-size: .95rem;
+    border-radius: 6px;
+    transition: .3s ease;
+}
+
+.contacto input::placeholder,
+.contacto textarea::placeholder { color: rgba(245,240,232,.45); }
+
+.contacto input:focus,
+.contacto textarea:focus {
+    outline: none;
+    border-color: #c9a870;
+    box-shadow: 0 0 15px rgba(201,168,112,.15);
+}
+
+.contacto textarea {
+    min-height: 180px;
+    resize: vertical;
+}
+
+.contacto button[type="submit"] {
+    width: fit-content;
+    padding: 14px 28px;
+    background: var(--color-rojo);
+    color: #f5f0e8;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: var(--fuente-cuerpo);
+    font-weight: 500;
+    letter-spacing: .05em;
+    transition: .3s ease;
+}
+
+.contacto button[type="submit"]:hover {
+    transform: translateY(-3px);
+    background: var(--color-rojo-claro);
+    box-shadow: 0 8px 25px rgba(192,57,43,.35);
+}
+
+
+/* ══════════════════════════════════════
+   FOOTER
+══════════════════════════════════════ */
 footer {
     background: #0d0b09;
     padding: 2rem 3rem;
@@ -674,360 +852,78 @@ footer {
 .footer-logo { font-family: var(--fuente-cuerpo); font-weight: 500; font-size: 1rem; color: var(--color-rojo); }
 
 .footer-redes { display: flex; gap: 2rem; }
-
 .footer-redes a { font-size: 0.8rem; opacity: 0.5; transition: var(--transicion); }
 .footer-redes a:hover { opacity: 1; }
 
-.footer-bottom { display: flex; gap: 2.5rem; flex-wrap: wrap; padding-top: 1rem; border-top: 1px solid var(--color-borde); }
+.footer-bottom {
+    display: flex;
+    gap: 2.5rem;
+    flex-wrap: wrap;
+    padding-top: 1rem;
+    border-top: 1px solid var(--color-borde);
+}
+
 .footer-bottom p { font-size: 0.68rem; opacity: 0.25; letter-spacing: 0.08em; }
 
-/* ── CADENA DE PRODUCTOS EXTENDIDOS ── */
-/* ── NUEVA ESTRUCTURA INTERNA DEL CARRUSEL EN CADENA ── */
-.contenedor-cadenas {
-    margin-top: 2rem;
-    width: 100%;
-}
 
-.cadena-productos {
-    max-height: 0;
-    opacity: 0;
-    overflow: hidden;
-    background: rgba(255, 255, 255, 0.01); /* Fondo muy sutil */
-    border: 1px solid transparent;
-    border-radius: 4px;
-    transition: max-height 0.6s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s ease, padding 0.3s ease, margin 0.3s ease;
-    padding: 0 1.5rem;
-    margin-bottom: 0;
-}
-
-.cadena-productos.activa {
-    max-height: 1200px; /* Incrementado para dar espacio a las tarjetas completas */
-    opacity: 1;
-    padding: 2rem 1.5rem;
-    margin-bottom: 2rem;
-    border-color: rgba(192, 57, 43, 0.15);
-}
-
-.cadena-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px solid var(--color-borde);
-    padding-bottom: 0.8rem;
-    margin-bottom: 1.5rem;
-}
-
-.cadena-header h4 {
-    font-family: var(--fuente-titulo);
-    color: var(--color-dorado);
-    font-size: 1.1rem;
-    letter-spacing: 0.05em;
-}
-
-.btn-cerrar-cadena {
-    background: transparent;
-    border: none;
-    color: var(--color-texto);
-    font-size: 1.5rem;
-    cursor: pointer;
-    opacity: 0.5;
-    transition: var(--transicion);
-}
-
-.btn-cerrar-cadena:hover {
-    opacity: 1;
-    color: var(--color-rojo);
-}
-
-/* Reorganización de la cuadrícula interna */
-.tarjetas-cadena {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 1.5rem;
-}
-
-/* Ajustes específicos para las tarjetas del carrusel */
-.tarjeta-mini-completa {
-    background: var(--color-fondo-card2) !important; /* Un tono más claro para resaltar del fondo */
-    border: 1px solid var(--color-borde-card);
-}
-
-.tarjeta-imagen-mini {
-    position: relative;
-    padding: 1.5rem;
-    border-bottom: 1px solid var(--color-borde-card);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 140px;
-    background: rgba(255, 255, 255, 0.01);
-}
-
-.ref-mini {
-    position: absolute;
-    top: 0.6rem; left: 0.6rem;
-    font-size: 0.55rem;
-    letter-spacing: 0.12em;
-    color: var(--color-dorado);
-    opacity: 0.5;
-}
-
-.emoji-mini {
-    font-size: 3.5rem;
-    line-height: 1;
-}
-
-.tarjeta-info-mini {
-    padding: 1rem 1.2rem;
-}
-
-.tarjeta-info-mini h3 {
-    font-family: var(--fuente-titulo);
-    font-size: 1rem;
-    font-weight: 700;
-    margin-bottom: 0.4rem;
-    color: var(--color-texto);
-}
-
-.tarjeta-info-mini p {
-    font-size: 0.78rem;
-    opacity: 0.5;
-    line-height: 1.5;
-    margin-bottom: 1rem;
-}
-
-.tarjeta-footer-mini h4 {
-    font-family: var(--fuente-titulo);
-    font-size: 1.15rem;
-    font-weight: 700;
-    color: var(--color-dorado);
-}
-
-/* ── RESPONSIVE ── */
+/* ══════════════════════════════════════
+   RESPONSIVE — TABLET (≤900px)
+   El hero pasa a columna única.
+   Las grids de 3 columnas pasan a 1 columna.
+   Stats pasa a 2 columnas.
+══════════════════════════════════════ */
 @media (max-width: 900px) {
-   .hero-grid { 
-        grid-template-columns: 1fr; 
-        gap: 3rem;
-    }
-    
-    .hero-imagen { 
-        display: block; 
-        min-height: 400px; 
-        animation: none; /* Desactivamos flotación en móvil para evitar saltos raros */
-        
-        /* En móvil el difuminado va de arriba (transparente) hacia abajo (negro) */
+    .hero-grid { grid-template-columns: 1fr; gap: 3rem; }
+
+    .hero-imagen {
+        display: block;
+        min-height: 400px;
+        animation: none; /* Se desactiva en móvil para evitar saltos */
         mask-image: linear-gradient(to bottom, transparent 0%, black 15%);
         -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 15%);
     }
-    
-    .tarjetas             { grid-template-columns: 1fr; }
-    .porque-grid          { grid-template-columns: 1fr; }
-    .testimonios-grid     { grid-template-columns: 1fr; }
-    .stats                { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
-}
 
-@media (max-width: 600px) {
-    .nav      { padding: 1rem 1.5rem; }
-    .menu     { display: none; }
-    .hero     { padding: 6rem 1.5rem 3rem; }
-    .catalogo, .porque, .testimonios, .cta-final { padding: 4rem 1.5rem; }
-    footer    { padding: 2rem 1.5rem; }
-    .stats    { padding: 1.5rem; }
-    .stat-item { border-right: none; border-bottom: 1px solid rgba(0,0,0,0.1); padding: 1rem 0; }
-    .hero-imagen {
-        margin-right: -1.5rem;
-        margin-left: -1.5rem;
-        margin-bottom: -3rem;
-    }
+    .tarjetas          { grid-template-columns: 1fr; }
+    .porque-grid       { grid-template-columns: 1fr; }
+    .testimonios-grid  { grid-template-columns: 1fr; }
+    .stats             { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
 }
 
 
-
-/* ==========================================================================
-   ── CONFIGURACIÓN GENERAL DEL BOTÓN HAMBURGUESA (PUESTO FUERA DEL MEDIA) ──
-   ========================================================================== */
-.menu-hamburger {
-    display: none; /* Oculto en computadora */
-    flex-direction: column;
-    justify-content: space-between;
-    width: 26px;
-    height: 18px;
-    background: transparent !important; /* Forzamos que no tenga fondos raros */
-    border: none !important;
-    padding: 0;
-    cursor: pointer;
-    z-index: 1001;
-}
-
-/* Diseñamos las 3 líneas reales */
-.menu-hamburger span {
-    display: block;
-    width: 100%;
-    height: 2px;
-    background-color: #fff; /* Color de las líneas (ajústalo si usas otro) */
-    border-radius: 2px;
-    transition: all 0.3s ease;
-    transform-origin: left center;
-}
-
- /*formulario */ 
-    .contacto{
-    max-width:800px;
-    margin:120px auto;
-    padding:0 20px;
-    text-align:center;
-}
-
-.contacto form{
-    display:flex;
-    flex-direction:column;
-    gap:16px;
-    margin-top:30px;
-}
-
-.contacto input,
-.contacto textarea{
-    background:#141210;
-    border:1px solid rgba(255,255,255,.1);
-    color:white;
-    padding:16px;
-    border-radius:6px;
-    font-family:inherit;
-}
-
-.contacto input:focus,
-.contacto textarea:focus{
-    outline:none;
-    border-color:#c9a870;
-}
-
-.contacto button{
-    background:#c9a870;
-    color:#141210;
-    border:none;
-    padding:16px;
-    cursor:pointer;
-    font-weight:600;
-    transition:.3s;
-}
-
-.contacto button:hover{
-    transform:translateY(-3px);
-}
-
-/* ───────── CONTACTO ───────── */
-
-.contacto{
-    max-width: 900px;
-    margin: 120px auto;
-    padding: 0 30px;
-}
-
-.contacto form{
-    margin-top: 40px;
-    display: flex;
-    flex-direction: column;
-    gap: 18px;
-}
-
-.contacto input,
-.contacto textarea{
-    width: 100%;
-    padding: 18px 20px;
-
-    background: rgba(255,255,255,0.03);
-    border: 1px solid rgba(201,168,112,.2);
-
-    color: #f5f0e8;
-    font-family: var(--fuente-texto);
-    font-size: .95rem;
-
-    border-radius: 6px;
-
-    transition: .3s ease;
-}
-
-.contacto input::placeholder,
-.contacto textarea::placeholder{
-    color: rgba(245,240,232,.45);
-}
-
-.contacto input:focus,
-.contacto textarea:focus{
-    outline: none;
-    border-color: #c9a870;
-
-    box-shadow:
-        0 0 15px rgba(201,168,112,.15);
-}
-
-.contacto textarea{
-    min-height: 180px;
-    resize: vertical;
-}
-
-.contacto button{
-    width: fit-content;
-
-    padding: 14px 28px;
-
-    background: #c0392b;
-    color: #f5f0e8;
-
-    border: none;
-    border-radius: 4px;
-
-    cursor: pointer;
-
-    font-family: var(--fuente-texto);
-    font-weight: 500;
-    letter-spacing: .05em;
-
-    transition: .3s ease;
-}
-
-.contacto button:hover{
-    transform: translateY(-3px);
-
-    background: #d24a3b;
-
-    box-shadow:
-        0 8px 25px rgba(192,57,43,.35);
-}
-
-/* ==========================================================================
-   ── SECCIÓN RESPONSIVE CORREGIDA ──
-   ========================================================================== */
+/* ══════════════════════════════════════
+   RESPONSIVE — MÓVIL (≤768px)
+   Aparece el hamburger, desaparece el menú inline.
+   El nav-links-container se convierte en panel lateral deslizante.
+══════════════════════════════════════ */
 @media (max-width: 768px) {
-    
-    .menu-hamburger {
-        display: flex; /* Hacemos que aparezca en móviles */
-    }
 
+    /* Muestra el botón hamburger */
+    .menu-hamburger { display: flex; }
+
+    /* El menú se oculta a la derecha de la pantalla y se desliza al activarse */
     .nav-links-container {
         position: fixed;
         top: 0;
-        right: -100%; 
+        right: -100%;
         width: 75%;
         height: 100vh;
-        background: rgba(20, 18, 16, 0.98); 
+        background: rgba(20, 18, 16, 0.98);
         backdrop-filter: blur(15px);
         border-left: 1px solid var(--color-borde);
-        display: flex; /* Asegura el orden en columna */
+        display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
         gap: 3rem;
         transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         z-index: 1000;
-        margin: 0 !important; /* Evita que herede el centrado de escritorio */
+        margin: 0 !important;
     }
 
-    .nav-links-container.menu-abierto {
-        right: 0;
-    }
+    /* Clase añadida por JS al abrir el menú */
+    .nav-links-container.menu-abierto { right: 0; }
 
-    /* Reseteamos el truco del absoluto en celulares */
+    /* En móvil el menú pierde el position:absolute del escritorio */
     .menu {
         position: static !important;
         transform: none !important;
@@ -1037,28 +933,40 @@ footer {
         margin: 0;
     }
 
-    .menu a {
-        font-size: 1.2rem;
-        opacity: 0.9;
-    }
+    .menu a { font-size: 1.2rem; opacity: 0.9; }
 
-    .btn-nav {
-        margin-left: 0 !important; /* Centra el botón en celulares */
-    }
+    /* El botón CTA se centra en el panel móvil */
+    .btn-nav { margin-left: 0 !important; }
 
-    /* ── ANIMACIÓN DE LAS LÍNEAS AL HACER CLIC (TRANSFORMACIÓN A "X") ── */
-    .menu-hamburger.animado span:nth-child(1) {
-        transform: rotate(45deg);
-    }
-
-    .menu-hamburger.animado span:nth-child(2) {
-        width: 0%;
-        opacity: 0;
-    }
-
-    .menu-hamburger.animado span:nth-child(3) {
-        transform: rotate(-45deg);
-    }
-   
+    /* Animación hamburger → X al pulsar */
+    .menu-hamburger.animado span:nth-child(1) { transform: rotate(45deg); }
+    .menu-hamburger.animado span:nth-child(2) { width: 0%; opacity: 0; }
+    .menu-hamburger.animado span:nth-child(3) { transform: rotate(-45deg); }
 }
 
+
+/* ══════════════════════════════════════
+   RESPONSIVE — MÓVIL PEQUEÑO (≤600px)
+   Ajustes de padding y la imagen del hero se extiende hasta los bordes.
+══════════════════════════════════════ */
+@media (max-width: 600px) {
+    .nav      { padding: 1rem 1.5rem; }
+    .hero     { padding: 6rem 1.5rem 3rem; }
+    .catalogo, .porque, .testimonios, .cta-final { padding: 4rem 1.5rem; }
+    .contacto { padding: 4rem 1.5rem; }
+    footer    { padding: 2rem 1.5rem; }
+    .stats    { padding: 1.5rem; }
+
+    .stat-item {
+        border-right: none;
+        border-bottom: 1px solid rgba(0,0,0,0.1);
+        padding: 1rem 0;
+    }
+
+    /* La imagen del hero se extiende hasta los bordes de la pantalla */
+    .hero-imagen {
+        margin-right: -1.5rem;
+        margin-left:  -1.5rem;
+        margin-bottom: -3rem;
+    }
+}

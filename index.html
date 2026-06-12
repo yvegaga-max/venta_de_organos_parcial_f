@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ANATEMA · condenadamente adorable </title>
+    <title>ANATEMA · Condenadamente adorable</title>
     <link rel="stylesheet" href="./styles/style.css">
     <link
         href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Jost:wght@200;300;400;500&display=swap"
@@ -13,31 +13,48 @@
 
 <body>
 
-    <!-- ── NAVEGACIÓN ── -->
+    <!-- ══════════════════════════════
+         NAVEGACIÓN PRINCIPAL
+         Fija en la parte superior.
+         Contiene: logo | menú centrado | botón CTA derecha
+         En móvil (<768px): se oculta el menú y aparece el hamburger
+    ══════════════════════════════ -->
     <nav class="nav" id="navbar">
+
+        <!-- Logo: imagen + nombre de marca -->
         <div class="logo">
             <img src="assets/logo2.png" alt="Logo Anatema" class="logo-img">
             <h2 class="logo-texto">ANATEMA</h2>
         </div>
 
-        <button class="menu-hamburger" id="hamburger-btn">
+        <!-- Botón hamburguesa: solo visible en móvil (<768px) -->
+        <button class="menu-hamburger" id="hamburger-btn" aria-label="Abrir menú">
             <span></span>
             <span></span>
             <span></span>
         </button>
 
+        <!-- Contenedor del menú + botón CTA
+             En escritorio: menú centrado con position:absolute, botón a la derecha con margin-left:auto
+             En móvil: panel lateral deslizante activado por el hamburger -->
         <div class="nav-links-container" id="nav-links-container">
             <ul class="menu">
                 <li><a href="#catalogo" class="nav-item">Catálogo</a></li>
                 <li><a href="#ediciones" class="nav-item">Ediciones</a></li>
                 <li><a href="#nosotros" class="nav-item">Nosotros</a></li>
             </ul>
-            <button class="btn-nav"><a href="#contacto" class="nav-item">Adoptar ahora</a></button>
+            <button class="btn-nav"><a href="#formulario-contacto" class="nav-item">Adoptar ahora</a></button>
         </div>
+
     </nav>
 
-    <!-- ── HERO ── -->
+    <!-- ══════════════════════════════
+         HERO — Sección principal de entrada
+         Ocupa el 100vh. Presenta el título, descripción y botones de acción.
+         La imagen de fondo usa background-image para el efecto de máscara CSS.
+    ══════════════════════════════ -->
     <section class="hero">
+        <!-- Badges decorativos de estado del producto -->
         <div class="hero-badges">
             <span class="badge">Nuevo lanzamiento</span>
             <span class="badge badge-outline">Cerebelo disponible</span>
@@ -45,6 +62,7 @@
         </div>
 
         <div class="hero-grid">
+            <!-- Columna izquierda: texto y botones -->
             <div class="hero-texto">
                 <h1>Órganos que se <em>cosen</em> y que se <em>recuerdan.</em></h1>
                 <p class="subtitulo">
@@ -59,11 +77,15 @@
                 </div>
             </div>
 
+            <!-- Columna derecha: imagen con efecto de máscara y animación flotante -->
             <div class="hero-imagen" style="background-image: url('assets/corazon.jpg');"></div>
         </div>
     </section>
 
-    <!-- ── STATS ── -->
+    <!-- ══════════════════════════════
+         STATS — Banda de métricas destacadas
+         Fondo dorado. 4 columnas con números clave del negocio.
+    ══════════════════════════════ -->
     <div class="stats">
         <div class="stat-item">
             <p class="stat-num">+12K</p>
@@ -86,222 +108,231 @@
         </div>
     </div>
 
-    <!-- ── CATÁLOGO ── -->
+    <!-- ══════════════════════════════
+         CATÁLOGO — Productos principales
+         Grid de 3 tarjetas. Cada tarjeta tiene un botón "+"
+         que despliega una "cadena" de variantes del mismo producto.
+    ══════════════════════════════ -->
     <section class="catalogo" id="catalogo">
         <p class="seccion-etiqueta">// CATÁLOGO</p>
         <h2>Los más adoptados</h2>
         <p class="subtitulo-seccion">Cada uno con su propio carácter. Ninguno igual.</p>
 
-        <section class="catalogo" id="catalogo">
-            <span class="seccion-etiqueta">Laboratorio</span>
-            <p class="subtitulo-seccion">Piezas anatómicas remendadas a mano.</p>
+        <span class="seccion-etiqueta">Laboratorio</span>
+        <p class="subtitulo-seccion">Piezas anatómicas remendadas a mano.</p>
 
-            <div class="tarjetas">
-                <div class="tarjeta">
-                    <div class="tarjeta-imagen">
-                        <span class="ref">REF—20L</span>
-                        <img src="assets/pulsoxl.png" alt="Pulso XL" class="img-producto-lleno">
-                    </div>
-                    <div class="tarjeta-info">
-                        <h3>Pulso XL: Ensamblaje 04</h3>
-                        <p>4 cámaras de fieltro remendadas, arterias de cobre hilado.</p>
-                        <div class="tarjeta-footer">
-                            <h4>$34.900</h4>
-                            <button class="btn-mas" data-target="cadena-corazon">+</button>
-                        </div>
+        <!-- Grid de tarjetas de producto -->
+        <div class="tarjetas">
+
+            <!-- Tarjeta 1: Corazón -->
+            <div class="tarjeta">
+                <div class="tarjeta-imagen">
+                    <span class="ref">REF—20L</span>
+                    <img src="assets/pulsoxl.png" alt="Pulso XL" class="img-producto-lleno">
+                </div>
+                <div class="tarjeta-info">
+                    <h3>Pulso XL: Ensamblaje 04</h3>
+                    <p>4 cámaras de fieltro remendadas, arterias de cobre hilado.</p>
+                    <div class="tarjeta-footer">
+                        <h4>$34.900</h4>
+                        <!-- data-target apunta al id de la cadena que debe abrir -->
+                        <button class="btn-mas" data-target="cadena-corazon">+</button>
                     </div>
                 </div>
+            </div>
 
-                <div class="tarjeta tarjeta-destacada">
-                    <div class="tarjeta-imagen">
-                        <span class="ref">REF—602</span>
-                        <img src="assets/menteenespiral.png" alt="Mente en Espiral" class="img-producto-lleno">
-                    </div>
-                    <div class="tarjeta-info">
-                        <h3>Mente en Espiral: Anomalía 01</h3>
-                        <p>Lóbulos de algodón trenzado, circunvoluciones de encaje de Calais.</p>
-                        <div class="tarjeta-footer">
-                            <h4>$38.500</h4>
-                            <button class="btn-mas" data-target="cadena-cerebro">+</button>
-                        </div>
+            <!-- Tarjeta 2: Cerebro (tarjeta destacada con fondo claro) -->
+            <div class="tarjeta tarjeta-destacada">
+                <div class="tarjeta-imagen">
+                    <span class="ref">REF—602</span>
+                    <img src="assets/menteenespiral.png" alt="Mente en Espiral" class="img-producto-lleno">
+                </div>
+                <div class="tarjeta-info">
+                    <h3>Mente en Espiral: Anomalía 01</h3>
+                    <p>Lóbulos de algodón trenzado, circunvoluciones de encaje de Calais.</p>
+                    <div class="tarjeta-footer">
+                        <h4>$38.500</h4>
+                        <button class="btn-mas" data-target="cadena-cerebro">+</button>
                     </div>
                 </div>
+            </div>
 
-                <div class="tarjeta">
-                    <div class="tarjeta-imagen">
-                        <span class="ref">REF—902</span>
-                        <img src="assets/alientodeseda.png" alt="Aliento de Seda" class="img-producto-lleno">
+            <!-- Tarjeta 3: Pulmones -->
+            <div class="tarjeta">
+                <div class="tarjeta-imagen">
+                    <span class="ref">REF—902</span>
+                    <img src="assets/alientodeseda.png" alt="Aliento de Seda" class="img-producto-lleno">
+                </div>
+                <div class="tarjeta-info">
+                    <h3>Aliento de Seda: Prototipo 02</h3>
+                    <p>Par de fino texturizado con bronquios de seda cruda.</p>
+                    <div class="tarjeta-footer">
+                        <h4>$41.200</h4>
+                        <button class="btn-mas" data-target="cadena-pulmones">+</button>
                     </div>
-                    <div class="tarjeta-info">
-                        <h3>Aliento de Seda: Prototipo 02</h3>
-                        <p>Par de fino texturizado con bronquios de seda cruda.</p>
-                        <div class="tarjeta-footer">
-                            <h4>$41.200</h4>
-                            <button class="btn-mas" data-target="cadena-pulmones">+</button>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- ══════════════════════════════
+             CADENAS DE PRODUCTOS (variantes)
+             Ocultas por defecto (max-height: 0).
+             Se activan con la clase "activa" vía JS cuando se pulsa el botón "+"
+        ══════════════════════════════ -->
+        <div class="contenedor-cadenas">
+
+            <!-- Cadena: variantes del corazón -->
+            <div id="cadena-corazon" class="cadena-productos">
+                <div class="cadena-header">
+                    <h4>Variaciones & Derivados del Pulso</h4>
+                    <button class="btn-cerrar-cadena">&times;</button>
+                </div>
+                <div class="tarjetas-cadena">
+                    <div class="tarjeta tarjeta-mini-completa">
+                        <div class="tarjeta-imagen-mini">
+                            <span class="ref-mini">REF—20L-A</span>
+                            <img src="assets/minipulsoescarlata.png" alt="Mini Pulso Escarlata" class="img-icono-producto">
+                        </div>
+                        <div class="tarjeta-info-mini">
+                            <h3>Mini Pulso Escarlata</h3>
+                            <p>Versión compacta en fieltro denso.</p>
+                            <div class="tarjeta-footer-mini">
+                                <h4>$12.000</h4>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tarjeta tarjeta-mini-completa">
+                        <div class="tarjeta-imagen-mini">
+                            <span class="ref-mini">REF—20L-B</span>
+                            <img src="assets/arteriaexpuesta.png" alt="Arteria expuesta" class="img-icono-producto">
+                        </div>
+                        <div class="tarjeta-info-mini">
+                            <h3>Arteria Expuesta</h3>
+                            <p>Estudio de capilares en cobre puro.</p>
+                            <div class="tarjeta-footer-mini">
+                                <h4>$18.500</h4>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div class="contenedor-cadenas">
-
-                <div id="cadena-corazon" class="cadena-productos">
-                    <div class="cadena-header">
-                        <h4>Variaciones & Derivados del Pulso</h4>
-                        <button class="btn-cerrar-cadena">&times;</button>
+            <!-- Cadena: variantes del cerebro -->
+            <div id="cadena-cerebro" class="cadena-productos">
+                <div class="cadena-header">
+                    <h4>Extensiones del Sistema Nervioso</h4>
+                    <button class="btn-cerrar-cadena">&times;</button>
+                </div>
+                <div class="tarjetas-cadena">
+                    <div class="tarjeta tarjeta-mini-completa">
+                        <div class="tarjeta-imagen-mini">
+                            <span class="ref-mini">REF—602-A</span>
+                            <img src="assets/cerebelo.png" alt="Cerebelo aislado" class="img-icono-producto">
+                        </div>
+                        <div class="tarjeta-info-mini">
+                            <h3>Cerebelo Aislado</h3>
+                            <p>Remendado con encaje negro de Calais.</p>
+                            <div class="tarjeta-footer-mini">
+                                <h4>$18.000</h4>
+                            </div>
+                        </div>
                     </div>
-                    <div class="tarjetas-cadena">
-
-                        <div class="tarjeta tarjeta-mini-completa">
-                            <div class="tarjeta-imagen-mini">
-                                <span class="ref-mini">REF—20L-A</span>
-                                <img src="assets/minipulsoescarlata.png" alt="Icono Cerebro" class="img-icono-producto">
-                            </div>
-                            <div class="tarjeta-info-mini">
-                                <h3>Mini Pulso Escarlata</h3>
-                                <p>Versión compacta en fieltro denso.</p>
-                                <div class="tarjeta-footer-mini">
-                                    <h4>$12.000</h4>
-                                </div>
+                    <div class="tarjeta tarjeta-mini-completa">
+                        <div class="tarjeta-imagen-mini">
+                            <span class="ref-mini">REF—602-B</span>
+                            <img src="assets/lobulofrontal.png" alt="Lóbulo frontal" class="img-icono-producto">
+                        </div>
+                        <div class="tarjeta-info-mini">
+                            <h3>Lóbulo Frontal Texturado</h3>
+                            <p>Algodón trenzado crudo de alta densidad.</p>
+                            <div class="tarjeta-footer-mini">
+                                <h4>$21.000</h4>
                             </div>
                         </div>
-
-                        <div class="tarjeta tarjeta-mini-completa">
-                            <div class="tarjeta-imagen-mini">
-                                <span class="ref-mini">REF—20L-B</span>
-                                <img src="assets/arteriaexpuesta.png" alt="Arteria expuesta" class="img-icono-producto">
-                            </div>
-                            <div class="tarjeta-info-mini">
-                                <h3>Arteria Expuesta</h3>
-                                <p>Estudio de capilares en cobre puro.</p>
-                                <div class="tarjeta-footer-mini">
-                                    <h4>$18.500</h4>
-                                </div>
-                            </div>
-                        </div>
-
                     </div>
                 </div>
+            </div>
 
-                <div id="cadena-cerebro" class="cadena-productos">
-                    <div class="cadena-header">
-                        <h4>Extensiones del Sistema Nervioso</h4>
-                        <button class="btn-cerrar-cadena">&times;</button>
+            <!-- Cadena: variantes de los pulmones -->
+            <div id="cadena-pulmones" class="cadena-productos">
+                <div class="cadena-header">
+                    <h4>Módulos Respiratorios Complementarios</h4>
+                    <button class="btn-cerrar-cadena">&times;</button>
+                </div>
+                <div class="tarjetas-cadena">
+                    <div class="tarjeta tarjeta-mini-completa">
+                        <div class="tarjeta-imagen-mini">
+                            <span class="ref-mini">REF—902-A</span>
+                            <img src="assets/alveoloindividual.png" alt="Alveolo individual" class="img-icono-producto">
+                        </div>
+                        <div class="tarjeta-info-mini">
+                            <h3>Alveolo Individual</h3>
+                            <p>Seda cruda con costuras carmesí.</p>
+                            <div class="tarjeta-footer-mini">
+                                <h4>$14.500</h4>
+                            </div>
+                        </div>
                     </div>
-                    <div class="tarjetas-cadena">
-
-                        <div class="tarjeta tarjeta-mini-completa">
-                            <div class="tarjeta-imagen-mini">
-                                <span class="ref-mini">REF—602-A</span>
-                                <img src="assets/cerebelo.png" alt="Icono Cerebro" class="img-icono-producto">
-                            </div>
-                            <div class="tarjeta-info-mini">
-                                <h3>Cerebelo Aislado</h3>
-                                <p>Remendado con encaje negro de Calais.</p>
-                                <div class="tarjeta-footer-mini">
-                                    <h4>$18.000</h4>
-                                </div>
+                    <div class="tarjeta tarjeta-mini-completa">
+                        <div class="tarjeta-imagen-mini">
+                            <span class="ref-mini">REF—902-B</span>
+                            <img src="assets/traquea.png" alt="Tráquea de lana" class="img-icono-producto">
+                        </div>
+                        <div class="tarjeta-info-mini">
+                            <h3>Tráquea de Lana</h3>
+                            <p>Estructura tubular tejida a mano.</p>
+                            <div class="tarjeta-footer-mini">
+                                <h4>$9.000</h4>
                             </div>
                         </div>
-
-                        <div class="tarjeta tarjeta-mini-completa">
-                            <div class="tarjeta-imagen-mini">
-                                <span class="ref-mini">REF—602-B</span>
-                                <img src="assets/lobulofrontal.png" alt="Icono Cerebro" class="img-icono-producto">
-                            </div>
-                            <div class="tarjeta-info-mini">
-                                <h3>Lóbulo Frontal Texturado</h3>
-                                <p>Algodón trenzado crudo de alta densidad.</p>
-                                <div class="tarjeta-footer-mini">
-                                    <h4>$21.000</h4>
-                                </div>
-                            </div>
-                        </div>
-
                     </div>
                 </div>
-
-                <div id="cadena-pulmones" class="cadena-productos">
-                    <div class="cadena-header">
-                        <h4>Módulos Respiratorios Complementarios</h4>
-                        <button class="btn-cerrar-cadena">&times;</button>
-                    </div>
-                    <div class="tarjetas-cadena">
-
-                        <div class="tarjeta tarjeta-mini-completa">
-                            <div class="tarjeta-imagen-mini">
-                                <span class="ref-mini">REF—902-A</span>
-                                <img src="assets/alveoloindividual.png" alt="Alveolo individual"
-                                    class="img-icono-producto">
-                            </div>
-                            <div class="tarjeta-info-mini">
-                                <h3>Alveolo Individual</h3>
-                                <p>Seda cruda con costuras carmesí.</p>
-                                <div class="tarjeta-footer-mini">
-                                    <h4>$14.500</h4>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="tarjeta tarjeta-mini-completa">
-                            <div class="tarjeta-imagen-mini">
-                                <span class="ref-mini">REF—902-B</span>
-                                <img src="assets/traquea.png" alt="Tráquea de Lana" class="img-icono-producto">
-                            </div>
-                            <div class="tarjeta-info-mini">
-                                <h3>Tráquea de Lana</h3>
-                                <p>Estructura tubular tejida a mano.</p>
-                                <div class="tarjeta-footer-mini">
-                                    <h4>$9.000</h4>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-
-            </div>
-        </section>
-    </section>
-
-    <!-- ── POR QUÉ ── -->
-    <section class="porque" id="nosotros">
-        <p class="seccion-etiqueta">// POR QUÉ PLUSHANATOMY</p>
-        <h2>Raros. Bonitos. Nuestros.</h2>
-
-        <div class="porque-grid">
-
-            <div class="porque-item pri">
-                <div class="porque-icono"><img src="assets/tejido.png" alt="Materiales" class="img-porque"></div>
-                <h4>Materiales: Puntadas obsesivas</h4>
-                <p>Tela anestésica, roletto hipoalergénico, costuras de laboratorio.</p>
-            </div>
-
-            <div class="porque-item sec">
-                <div class="porque-icono"><img src="assets/ficha.png" alt="Ficha" class="img-porque"></div>
-                <h4>Ficha: Registros crípticos</h4>
-                <p>Cada pieza viene con su caso real del órgano. Educativo y coleccionable.</p>
-            </div>
-
-            <div class="porque-item ter">
-                <div class="porque-icono"><img src="assets/produccion.png" alt="Producción" class="img-porque"> </div>
-                <h4>Producción: Ciclo regenerativo</h4>
-                <p>Empaques reutilizables, tintas naturales, cadena trazable.</p>
             </div>
 
         </div>
     </section>
 
-    <!-- ── TESTIMONIOS ── -->
+    <!-- ══════════════════════════════
+         POR QUÉ — Sección de propuesta de valor
+         3 tarjetas con íconos que explican las ventajas del producto.
+         id="nosotros" porque el nav apunta aquí con "Nosotros"
+    ══════════════════════════════ -->
+    <section class="porque" id="nosotros">
+        <p class="seccion-etiqueta">// POR QUÉ ANATEMA</p>
+        <h2>Raros. Bonitos. Nuestros.</h2>
+
+        <div class="porque-grid">
+            <div class="porque-item">
+                <div class="porque-icono"><img src="assets/tejido.png" alt="Materiales" class="img-porque"></div>
+                <h4>Materiales: Puntadas obsesivas</h4>
+                <p>Tela anestésica, roletto hipoalergénico, costuras de laboratorio.</p>
+            </div>
+            <div class="porque-item">
+                <div class="porque-icono"><img src="assets/ficha.png" alt="Ficha" class="img-porque"></div>
+                <h4>Ficha: Registros crípticos</h4>
+                <p>Cada pieza viene con su caso real del órgano. Educativo y coleccionable.</p>
+            </div>
+            <div class="porque-item">
+                <div class="porque-icono"><img src="assets/produccion.png" alt="Producción" class="img-porque"></div>
+                <h4>Producción: Ciclo regenerativo</h4>
+                <p>Empaques reutilizables, tintas naturales, cadena trazable.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══════════════════════════════
+         TESTIMONIOS
+         id="ediciones" porque el nav apunta aquí con "Ediciones"
+         (si en el futuro tienes una sección de ediciones separada, cambia este id)
+    ══════════════════════════════ -->
     <section class="testimonios" id="ediciones">
         <p class="seccion-etiqueta">// TESTIMONIOS</p>
         <h2>Gente que nos entendió</h2>
 
         <div class="testimonios-grid">
-
-            <div class="testimonio pri-t">
-                <p class="cita">"Le regalé el Pulso remendado a mi profesor de bioética. Casi llora de asombro… o de
-                    preocupación."</p>
+            <div class="testimonio">
+                <p class="cita">"Le regalé el Pulso remendado a mi profesor de bioética. Casi llora de asombro… o de preocupación."</p>
                 <div class="autor">
                     <div class="avatar">LM</div>
                     <div>
@@ -310,8 +341,7 @@
                     </div>
                 </div>
             </div>
-
-            <div class="testimonio sec-t">
+            <div class="testimonio">
                 <p class="cita">"El Mente excéntrico vive en mi mesa. Siento que me susurra ideas."</p>
                 <div class="autor">
                     <div class="avatar">CP</div>
@@ -321,61 +351,60 @@
                     </div>
                 </div>
             </div>
-
         </div>
     </section>
 
-    <!-- ── CTA FINAL ── -->
-    <section class="cta-final" id="contacto">
+    <!-- ══════════════════════════════
+         CTA FINAL — Llamada a la acción antes del formulario
+         id único "cta-adoptar" para no chocar con el formulario
+    ══════════════════════════════ -->
+    <section class="cta-final" id="cta-adoptar">
         <h2>¿Listo para <em>adoptar un órgano</em>?</h2>
         <p>Envío gratis en compras superiores a $80.000 · Hoy y siempre.</p>
         <button class="btn-cta"><a href="#catalogo">Explorar la colección de artefactos →</a></button>
     </section>
 
-    <!-- ── MALDITO FORMULARIO DE MIERDA ── -->
-    <section class="contacto" id="contacto">
+    <!-- ══════════════════════════════
+         FORMULARIO DE CONTACTO
+         id="formulario-contacto" (antes tenía id="contacto" repetido, lo que rompía los anclas).
+         El botón "Adoptar ahora" del nav apunta aquí.
+         Usa formsubmit.co como backend sin servidor propio.
+    ══════════════════════════════ -->
+    <section class="contacto" id="formulario-contacto">
         <p class="seccion-etiqueta">// CONTACTO</p>
-
         <h2>¿Quieres una parte de ti?</h2>
-
-        <p class="subtitulo-seccion">
-            Cuéntanos qué anomalía buscas y la coseremos para ti.
-        </p>
+        <p class="subtitulo-seccion">Cuéntanos qué anomalía buscas y la coseremos para ti.</p>
 
         <form action="https://formsubmit.co/yvegaga@ufpso.edu.co" method="POST">
+            <input type="text"  name="nombre"  placeholder="Tu nombre" required>
+            <input type="email" name="email"   placeholder="Tu correo electrónico" required>
+            <textarea name="mensaje" rows="6"  placeholder="Describe tu anomalía..." required></textarea>
+            <button type="submit">Enviar mensaje</button>
 
-            <input type="text" name="nombre" placeholder="Tu nombre" required>
-
-            <input type="email" name="email" placeholder="Tu correo electrónico" required>
-
-            <textarea name="mensaje" rows="6" placeholder="Describe tu anomalía..." required></textarea>
-
-            <button type="submit">
-                Enviar mensaje
-            </button>
-
-            <input type="hidden" name="_subject" value="Nuevo mensaje desde ANATEMA">
-            <input type="hidden" name="_captcha" value="false">
-
+            <!-- Campos ocultos de configuración de formsubmit.co -->
+            <input type="hidden" name="_subject"  value="Nuevo mensaje desde ANATEMA">
+            <input type="hidden" name="_captcha"  value="false">
         </form>
-
     </section>
 
-    <!-- ── FOOTER ── -->
+    <!-- ══════════════════════════════
+         FOOTER
+    ══════════════════════════════ -->
     <footer>
         <div class="footer-top">
-            <h3 class="footer-logo">PlushAnatomy</h3>
+            <h3 class="footer-logo">ANATEMA</h3>
             <ul class="footer-redes">
                 <li><a href="#" target="_blank">Instagram</a></li>
                 <li><a href="#" target="_blank">TikTok</a></li>
-                <li><a href="#contacto">Contacto</a></li>
+                <li><a href="#formulario-contacto">Contacto</a></li>
             </ul>
         </div>
         <div class="footer-bottom">
             <p>&copy; 2026 ANATEMA. Todos los derechos reservados.</p>
-            <p style="opacity: 0.4;">
-                <a href="https://www.flaticon.es/iconos-gratis/corazon" title="corazón iconos" target="_blank"
-                    rel="noopener">Corazón iconos creados por Futuer - Flaticon</a>
+            <p>
+                <a href="https://www.flaticon.es/iconos-gratis/corazon" title="corazón iconos" target="_blank" rel="noopener">
+                    Corazón iconos creados por Futuer - Flaticon
+                </a>
             </p>
         </div>
     </footer>
@@ -383,5 +412,4 @@
     <script src="scripts/main.js"></script>
 
 </body>
-
 </html>
